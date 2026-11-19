@@ -134,15 +134,13 @@
           return;
         }
 
-        const mobile = narrowScreen.matches;
-        const plates = mobile
-          ? ["cyan", "magenta", "bruise"]
-          : ["cyan", "magenta", "yellow", "bone", "bruise", "silhouette"];
+        /* Same plate count and palette everywhere, so phones see the full fan. */
+        const plates = ["cyan", "magenta", "yellow", "bone", "bruise", "silhouette"];
 
-        const extrusionDuration = mobile ? 230 : 340;
-        const stagger = mobile ? 40 : 50;
-        const holdDuration = mobile ? 500 : 600;
-        const collapseDuration = mobile ? 500 : 580;
+        const extrusionDuration = 340;
+        const stagger = 50;
+        const holdDuration = 600;
+        const collapseDuration = 580;
 
         stage.setAttribute("data-animating", "true");
         original.style.willChange = "transform";
@@ -158,19 +156,15 @@
             }
 
             const plane = createCopy(plate, index);
-            const depth = mobile
-              ? -20 - index * 45
-              : -40 - index * 36;
+            const depth = -40 - index * 36;
 
-            const scale = mobile
-              ? 0.92 - index * 0.07
-              : 0.92 - index * 0.028;
+            const scale = 0.92 - index * 0.028;
 
             const side = index % 2 === 0 ? -1 : 1;
-            const x = side * (mobile ? 34 + index * 34 : 56 + index * 30);
+            const x = side * (56 + index * 30);
 
-            const y = mobile ? -2 - index * 2 : -4 - index * 4;
-            const spin = side * (mobile ? 2.6 + index * 1.8 : 1.8 + index * 1.1);
+            const y = -4 - index * 4;
+            const spin = side * (1.8 + index * 1.1);
             const opacity = plate === "silhouette" ? 0.55 : 0.85;
 
             const extended =

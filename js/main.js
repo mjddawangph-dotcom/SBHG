@@ -329,19 +329,20 @@
     }
 
     const tiles = Array.from(row.querySelectorAll(".SBHG-product"));
-    let frame = 0;
+    let timer = 0;
     let dragging = false;
     let dragged = false;
     let startX = 0;
     let startLeft = 0;
 
     function nearestIndex() {
-      const left = scroller.scrollLeft;
+      /* Rect-based: offsets ignore scroll-padding and snapping. */
+      const base = scroller.getBoundingClientRect().left;
       let best = 0;
       let bestDistance = Infinity;
 
       tiles.forEach(function (tile, index) {
-        const distance = Math.abs(tile.offsetLeft - row.offsetLeft - left);
+        const distance = Math.abs(tile.getBoundingClientRect().left - base);
 
         if (distance < bestDistance) {
           bestDistance = distance;
@@ -353,7 +354,6 @@
     }
 
     function syncDots() {
-      frame = 0;
       const active = nearestIndex();
 
       dots.forEach(function (dot, index) {
@@ -374,11 +374,19 @@
       scroller.scrollTo({ left: scroller.scrollLeft + delta, behavior: "smooth" });
     }
 
-    scroller.addEventListener("scroll", function () {
-      if (!frame) {
-        frame = window.requestAnimationFrame(syncDots);
+    /* Timer, not rAF: frames are throttled in background tabs. */
+    function scheduleSync() {
+      if (timer) {
+        return;
       }
-    }, { passive: true });
+
+      timer = window.setTimeout(function () {
+        timer = 0;
+        syncDots();
+      }, 80);
+    }
+
+    scroller.addEventListener("scroll", scheduleSync, { passive: true });
 
     dots.forEach(function (dot, index) {
       dot.addEventListener("click", function () {
@@ -450,11 +458,7 @@
       }
     }, true);
 
-    window.addEventListener("resize", function () {
-      if (!frame) {
-        frame = window.requestAnimationFrame(syncDots);
-      }
-    });
+    window.addEventListener("resize", scheduleSync);
 
     syncDots();
   }
@@ -692,6 +696,12 @@
   function initialize() {
     startAtTop();
 
+    /*
+      No glitch layers and no scroll-driven choreography. The class stays so the
+      gallery, quote marquee and hover states keep their styling.
+    */
+    document.documentElement.classList.add("SBHG-motion");
+
     window.addEventListener("pageshow", function (event) {
       if (event.persisted) {
         startAtTop();
@@ -712,8 +722,6 @@
     initGallery();
 
     const modules = [
-      ["glitch", window.SBHG.glitch],
-      ["scroll", window.SBHG.scroll],
       ["heroFan", window.SBHG.heroFan]
     ];
 

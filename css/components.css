@@ -144,6 +144,23 @@ html.SBHG-loading body {
   padding: 4px 3px;
 }
 
+.SBHG-logo-lockup {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.SBHG-logo-slogan {
+  margin-top: .45em;
+  font-family: var(--mono);
+  font-size: clamp(7px, .16em, 11px);
+  font-weight: 400;
+  letter-spacing: .22em;
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--haze);
+}
+
 .SBHG-logo-star {
   flex: none;
   display: block;

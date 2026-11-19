@@ -210,6 +210,9 @@ main {
   flex-direction: column;
   align-items: center;
   width: 100%;
+  /* Own content height, not the container's: the -50% loop depends on it. */
+  flex: none;
+  height: max-content;
   will-change: transform;
 }
 
@@ -752,6 +755,25 @@ main {
 
   .SBHG-collection-window {
     overflow: visible;
+  }
+
+  /* Quote fills the phone screen, and fades out before it reaches the wordmark. */
+  .SBHG-quote-drift {
+    left: 0;
+    width: 100%;
+    transform: none;
+    -webkit-mask-image: linear-gradient(180deg,
+      transparent 0,
+      transparent calc(var(--header-height) + 18px),
+      #000 calc(var(--header-height) + 78px),
+      #000 88%,
+      transparent);
+    mask-image: linear-gradient(180deg,
+      transparent 0,
+      transparent calc(var(--header-height) + 18px),
+      #000 calc(var(--header-height) + 78px),
+      #000 88%,
+      transparent);
   }
 
   .SBHG-dots {
