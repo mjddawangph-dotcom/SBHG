@@ -16,10 +16,6 @@
   animation: SBHG-quote-up 28s linear infinite;
 }
 
-.SBHG-motion .SBHG-quote-track.is-paused {
-  animation-play-state: paused;
-}
-
 /*
   Reduced motion: the quote parks, only one copy is present.
 */
@@ -360,25 +356,5 @@
 
   .SBHG-motion .SBHG-product {
     scroll-snap-align: start;
-  }
-}
-
-/*
-  Phones: scroll.js does not run, so the quote marquee is enabled directly.
-  Everything else (glitch layers, pinned transforms, decode lines) is static.
-*/
-@media (max-width: 767px) {
-  .SBHG-quote-track {
-    animation: SBHG-quote-up 28s linear infinite;
-  }
-
-  .SBHG-glitch-layer {
-    display: none !important;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .SBHG-quote-track {
-      animation: none;
-    }
   }
 }

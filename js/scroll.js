@@ -6,15 +6,6 @@
   window.SBHG.scroll = {
     init: function () {
       const root = document.documentElement;
-
-      /*
-        Phones run a deliberately static page: no pinned sections, no decode,
-        no seam/line transforms. Only the quote marquee and the hero fan move.
-      */
-      if (window.matchMedia("(max-width: 767px)").matches) {
-        return;
-      }
-
       const header = document.getElementById("SBHG-header");
       const hero = document.getElementById("home");
       const heroWipe = document.querySelector(".SBHG-hero-wipe");

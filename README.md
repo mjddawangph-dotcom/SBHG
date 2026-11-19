@@ -86,22 +86,6 @@ Live copy: Instagram <https://www.instagram.com/brgy.sbhg/>, Facebook
 same-day via Lalamove, Kalookan. Sales copy on Carousell: "Everything on sale —
 30–50% off…".
 
-## Phones are static
-
-Under 768 px, `scroll.js` and `glitch.js` return early: no pinned sections, no decode
-lines, no seams, no glitch slices, no scroll-driven transforms. The mobile stylesheet
-enables the quote marquee directly (it normally needs `.SBHG-motion`) and hides any
-glitch layer. What still moves on a phone: the quote, the backdrop video, and the hero
-plate fan. The mobile clip is 480x270 / 15s / ~790 KB.
-
-## Runtime cost
-
-The only permanently animating things are the backdrop video and the quote marquee.
-`initBackdrop()` pauses both when the hero/quote leaves the viewport or the tab is
-hidden (a paused video keeps its frame, so the backdrop looks identical), and the video
-no longer carries a CSS `filter` — a static scrim in `.SBHG-bg::after` replaced it, so
-frames are not re-filtered every tick.
-
 ## Always start at the top
 
 `history.scrollRestoration = "manual"` is set in an inline head script, `startAtTop()`
