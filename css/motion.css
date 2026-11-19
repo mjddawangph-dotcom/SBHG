@@ -16,6 +16,10 @@
   animation: SBHG-quote-up 28s linear infinite;
 }
 
+.SBHG-motion .SBHG-quote-track.is-paused {
+  animation-play-state: paused;
+}
+
 /*
   Reduced motion: the quote parks, only one copy is present.
 */

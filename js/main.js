@@ -689,6 +689,83 @@
     }
   }
 
+  /*
+    Mobile cost control: the backdrop video and the quote marquee are the only
+    permanently animating things on the page. Both stop when the hero/quote
+    leaves the viewport or the tab is hidden; a paused video keeps its last
+    frame, so the backdrop looks unchanged.
+  */
+  function initBackdrop() {
+    const video = document.querySelector(".SBHG-hero-video");
+    const hero = document.getElementById("home");
+    const quote = document.querySelector(".SBHG-quote-track");
+
+    if (!video && !quote) {
+      return;
+    }
+
+    let timer = 0;
+    let lastVideo = null;
+    let lastQuote = null;
+
+    function apply() {
+
+      const vh = window.innerHeight;
+      const heroRect = hero ? hero.getBoundingClientRect() : null;
+      const quoteRect = quote ? quote.getBoundingClientRect() : null;
+
+      const heroVisible = heroRect
+        ? heroRect.bottom > 0 && heroRect.top < vh
+        : true;
+      const quoteVisible = quoteRect
+        ? quoteRect.bottom > 0 && quoteRect.top < vh
+        : true;
+
+      const showVideo = heroVisible && !document.hidden;
+      const showQuote = quoteVisible && !document.hidden;
+
+      if (video && showVideo !== lastVideo) {
+        lastVideo = showVideo;
+
+        if (showVideo) {
+          const playback = video.play();
+
+          if (playback && typeof playback.catch === "function") {
+            playback.catch(function () {
+              /* Autoplay refusal leaves the last frame in place. */
+            });
+          }
+        } else if (!video.paused) {
+          video.pause();
+        }
+      }
+
+      if (quote && showQuote !== lastQuote) {
+        lastQuote = showQuote;
+        quote.classList.toggle("is-paused", !showQuote);
+      }
+    }
+
+    /* Timer, not rAF: animation frames are throttled in background tabs. */
+    function schedule() {
+      if (timer) {
+        return;
+      }
+
+      timer = window.setTimeout(function () {
+        timer = 0;
+        apply();
+      }, 80);
+    }
+
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule);
+    document.addEventListener("visibilitychange", schedule);
+
+    apply();
+    window.setTimeout(schedule, 250);
+  }
+
   function initialize() {
     startAtTop();
 
@@ -707,6 +784,7 @@
 
     initLoader();
     initHeroVideo();
+    initBackdrop();
     initMenu();
     initProducts();
     initGallery();

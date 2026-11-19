@@ -86,6 +86,14 @@ Live copy: Instagram <https://www.instagram.com/brgy.sbhg/>, Facebook
 same-day via Lalamove, Kalookan. Sales copy on Carousell: "Everything on sale —
 30–50% off…".
 
+## Runtime cost
+
+The only permanently animating things are the backdrop video and the quote marquee.
+`initBackdrop()` pauses both when the hero/quote leaves the viewport or the tab is
+hidden (a paused video keeps its frame, so the backdrop looks identical), and the video
+no longer carries a CSS `filter` — a static scrim in `.SBHG-bg::after` replaced it, so
+frames are not re-filtered every tick.
+
 ## Always start at the top
 
 `history.scrollRestoration = "manual"` is set in an inline head script, `startAtTop()`

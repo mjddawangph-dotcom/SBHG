@@ -178,6 +178,14 @@ main {
   background: var(--void);
 }
 
+.SBHG-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: rgb(6 4 7 / 42%);
+}
+
 .SBHG-hero-video {
   position: absolute;
   inset: 0;
@@ -186,7 +194,6 @@ main {
   object-fit: cover;
   pointer-events: none;
   opacity: .5;
-  filter: saturate(.55) contrast(1.12) brightness(.62);
   background: var(--void);
 }
 
