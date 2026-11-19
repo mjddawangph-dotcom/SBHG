@@ -120,7 +120,8 @@ main {
 
 .SBHG-hero-stage {
   position: absolute;
-  bottom: 0;
+  bottom: 9vh;
+  bottom: 9svh;
   left: 50%;
   height: 88vh;
   height: 88svh;
@@ -618,6 +619,7 @@ main {
   }
 
   .SBHG-hero-stage {
+    bottom: 6svh;
     height: 66vh;
     height: 66svh;
     width: min(78vw, 39svh);
