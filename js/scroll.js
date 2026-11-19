@@ -292,14 +292,11 @@
         [hero, manifesto, collection, contact, footer].forEach(measureElement);
         sections.forEach(measureElement);
 
-        if (row && collectionWindow && desktop.matches && !reducedMotion.matches) {
-          collectionTravel = Math.max(
-            0,
-            row.scrollWidth - collectionWindow.clientWidth
-          );
-        } else {
-          collectionTravel = 0;
-        }
+        /*
+          The collection is a swipe gallery: nothing here scroll-drives it.
+          Travel stays 0 so no horizontal transform is ever applied.
+        */
+        collectionTravel = 0;
 
         root.style.setProperty(
           "--SBHG-collection-travel",
@@ -398,28 +395,11 @@
             return;
           }
 
-          let progress = 1;
-
-          if (desktop.matches) {
-            const x = item.left - collectionTravel * collectionProgress;
-            progress = clamp(
-              (window.innerWidth - x) / Math.max(1, item.width * 0.7),
-              0,
-              1
-            );
-          } else {
-            progress = clamp(
-              (y + viewportHeight * 0.9 - item.top) /
-                Math.max(1, Math.min(item.height, viewportHeight * 0.5)),
-              0,
-              1
-            );
-          }
-
-          tile.style.setProperty(
-            "--SBHG-tile-wipe",
-            (progress * 110).toFixed(2) + "%"
-          );
+          /*
+            Covers stay open: the gallery scrolls by swipe, not by page scroll,
+            so a scroll-driven wipe would leave off-screen tiles blank.
+          */
+          tile.style.setProperty("--SBHG-tile-wipe", "110%");
 
           /*
             Timing is used only for the small entry hit. Horizontal

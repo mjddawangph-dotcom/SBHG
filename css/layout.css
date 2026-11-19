@@ -343,6 +343,42 @@ main {
   overflow: clip;
 }
 
+.SBHG-gallery-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin: 40px var(--page-gutter) 0;
+}
+
+.SBHG-dots {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.SBHG-dot {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: 1px solid var(--haze);
+  border-radius: 999px;
+  background: transparent;
+  cursor: pointer;
+  transition: width .28s ease, background-color .28s ease, border-color .28s ease;
+}
+
+.SBHG-dot.is-active {
+  width: 26px;
+  background: var(--bone);
+  border-color: var(--bone);
+}
+
+.SBHG-dot:focus-visible {
+  outline: 2px solid var(--bone);
+  outline-offset: 3px;
+}
+
 .SBHG-collection-row {
   display: flex;
   flex-wrap: wrap;
@@ -708,6 +744,10 @@ main {
 
   .SBHG-collection-pin {
     padding-top: 75px;
+  }
+
+  .SBHG-collection-window {
+    overflow: visible;
   }
 
   .SBHG-collection-row {

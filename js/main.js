@@ -314,6 +314,151 @@
     }
   }
 
+  /*
+    Collection gallery: horizontal swipe with dots. No scroll choreography —
+    the row is a native scroller, the dots (and arrow keys) move it, and the
+    active dot grows into a pill.
+  */
+  function initGallery() {
+    const scroller = document.querySelector(".SBHG-collection-window");
+    const row = document.getElementById("SBHG-collection-row");
+    const dots = Array.from(document.querySelectorAll(".SBHG-dot"));
+
+    if (!scroller || !row || !dots.length) {
+      return;
+    }
+
+    const tiles = Array.from(row.querySelectorAll(".SBHG-product"));
+    let frame = 0;
+    let dragging = false;
+    let dragged = false;
+    let startX = 0;
+    let startLeft = 0;
+
+    function nearestIndex() {
+      const left = scroller.scrollLeft;
+      let best = 0;
+      let bestDistance = Infinity;
+
+      tiles.forEach(function (tile, index) {
+        const distance = Math.abs(tile.offsetLeft - row.offsetLeft - left);
+
+        if (distance < bestDistance) {
+          bestDistance = distance;
+          best = index;
+        }
+      });
+
+      return best;
+    }
+
+    function syncDots() {
+      frame = 0;
+      const active = nearestIndex();
+
+      dots.forEach(function (dot, index) {
+        const on = index === active;
+        dot.classList.toggle("is-active", on);
+        dot.setAttribute("aria-current", on ? "true" : "false");
+      });
+    }
+
+    function moveTo(index) {
+      const tile = tiles[index];
+
+      if (!tile) {
+        return;
+      }
+
+      const delta = tile.offsetLeft - row.offsetLeft - scroller.scrollLeft;
+      scroller.scrollTo({ left: scroller.scrollLeft + delta, behavior: "smooth" });
+    }
+
+    scroller.addEventListener("scroll", function () {
+      if (!frame) {
+        frame = window.requestAnimationFrame(syncDots);
+      }
+    }, { passive: true });
+
+    dots.forEach(function (dot, index) {
+      dot.addEventListener("click", function () {
+        moveTo(index);
+      });
+    });
+
+    scroller.addEventListener("keydown", function (event) {
+      if (event.key !== "ArrowRight" && event.key !== "ArrowLeft") {
+        return;
+      }
+
+      event.preventDefault();
+      const step = event.key === "ArrowRight" ? 1 : -1;
+      const next = Math.min(tiles.length - 1, Math.max(0, nearestIndex() + step));
+      moveTo(next);
+    });
+
+    /* Pointer drag for mouse users; touch already scrolls natively. */
+    scroller.addEventListener("pointerdown", function (event) {
+      if (event.pointerType !== "mouse") {
+        return;
+      }
+
+      dragging = true;
+      dragged = false;
+      startX = event.clientX;
+      startLeft = scroller.scrollLeft;
+      scroller.classList.add("is-dragging");
+      scroller.setPointerCapture(event.pointerId);
+    });
+
+    scroller.addEventListener("pointermove", function (event) {
+      if (!dragging) {
+        return;
+      }
+
+      const dx = event.clientX - startX;
+
+      if (Math.abs(dx) > 4) {
+        dragged = true;
+      }
+
+      scroller.scrollLeft = startLeft - dx;
+    });
+
+    function endDrag(event) {
+      if (!dragging) {
+        return;
+      }
+
+      dragging = false;
+      scroller.classList.remove("is-dragging");
+
+      if (event && event.pointerId && scroller.hasPointerCapture(event.pointerId)) {
+        scroller.releasePointerCapture(event.pointerId);
+      }
+    }
+
+    scroller.addEventListener("pointerup", endDrag);
+    scroller.addEventListener("pointercancel", endDrag);
+
+    /* A drag must not also trigger the VIEW button underneath. */
+    scroller.addEventListener("click", function (event) {
+      if (dragged) {
+        event.preventDefault();
+        event.stopPropagation();
+        dragged = false;
+      }
+    }, true);
+
+    window.addEventListener("resize", function () {
+      if (!frame) {
+        frame = window.requestAnimationFrame(syncDots);
+      }
+    });
+
+    syncDots();
+  }
+
   function initialize() {
     const root = document.documentElement;
     const year = document.getElementById("SBHG-year");
@@ -324,6 +469,7 @@
 
     initMenu();
     initProducts();
+    initGallery();
 
     const modules = [
       ["glitch", window.SBHG.glitch],

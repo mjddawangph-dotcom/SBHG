@@ -306,4 +306,55 @@
     animation-range: exit 0% exit 100%;
   }
 
-  .SBHG-motion.SBHG
+}
+
+/*
+  The collection is a swipe gallery, not a scroll-driven pin:
+  no sticky pin, no horizontal travel, no native timeline animation.
+*/
+@media (min-width: 768px) {
+  .SBHG-motion .SBHG-collection {
+    height: auto;
+  }
+
+  .SBHG-motion .SBHG-collection-pin {
+    position: relative;
+    top: auto;
+    height: auto;
+    padding-top: 90px;
+    padding-bottom: 80px;
+    overflow: visible;
+  }
+
+  .SBHG-motion .SBHG-collection-window {
+    height: auto;
+    margin-top: 36px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--page-gutter);
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    cursor: grab;
+  }
+
+  .SBHG-motion .SBHG-collection-window::-webkit-scrollbar {
+    display: none;
+  }
+
+  .SBHG-motion .SBHG-collection-window.is-dragging {
+    cursor: grabbing;
+    scroll-snap-type: none;
+  }
+
+  .SBHG-motion .SBHG-collection-row {
+    transform: none !important;
+    animation: none !important;
+    padding-bottom: 0;
+  }
+
+  .SBHG-motion .SBHG-product {
+    scroll-snap-align: start;
+  }
+}

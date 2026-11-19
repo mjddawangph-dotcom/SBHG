@@ -12,16 +12,16 @@
   <link rel="preload" href="assets/hero.png" as="image" fetchpriority="high">
   <link rel="preload" href="assets/fonts/orbitron-latin.woff2" as="font"
         type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="css/reset.css?v=20261120v">
-  <link rel="stylesheet" href="css/tokens.css?v=20261120v">
-  <link rel="stylesheet" href="css/layout.css?v=20261120v">
-  <link rel="stylesheet" href="css/components.css?v=20261120v">
-  <link rel="stylesheet" href="css/motion.css?v=20261120v">
+  <link rel="stylesheet" href="css/reset.css?v=20261120w">
+  <link rel="stylesheet" href="css/tokens.css?v=20261120w">
+  <link rel="stylesheet" href="css/layout.css?v=20261120w">
+  <link rel="stylesheet" href="css/components.css?v=20261120w">
+  <link rel="stylesheet" href="css/motion.css?v=20261120w">
 
-  <script defer src="js/hero-fan.js?v=20261120v"></script>
-  <script defer src="js/glitch.js?v=20261120v"></script>
-  <script defer src="js/scroll.js?v=20261120v"></script>
-  <script defer src="js/main.js?v=20261120v"></script>
+  <script defer src="js/hero-fan.js?v=20261120w"></script>
+  <script defer src="js/glitch.js?v=20261120w"></script>
+  <script defer src="js/scroll.js?v=20261120w"></script>
+  <script defer src="js/main.js?v=20261120w"></script>
 </head>
 <body>
   <div class="SBHG-bg" aria-hidden="true">
@@ -209,7 +209,8 @@
         <h2 class="SBHG-section-heading SBHG-glitch-target"
             id="SBHG-collection-heading" data-decode data-glitch>COLLECTION</h2>
 
-        <div class="SBHG-collection-window">
+        <div class="SBHG-collection-window" tabindex="0" role="region"
+             aria-roledescription="carousel" aria-label="Product gallery">
           <div class="SBHG-collection-row" id="SBHG-collection-row">
             <article class="SBHG-product SBHG-product-01 SBHG-glitch-target"
                      tabindex="0" aria-labelledby="SBHG-item-01"
@@ -355,6 +356,19 @@
               </div>
             </article>
           </div>
+        </div>
+
+        <div class="SBHG-gallery-bar">
+          <div class="SBHG-dots" role="group" aria-label="Gallery position">
+            <button class="SBHG-dot is-active" type="button" aria-label="Go to product 1" aria-current="true"></button>
+            <button class="SBHG-dot" type="button" aria-label="Go to product 2" aria-current="false"></button>
+            <button class="SBHG-dot" type="button" aria-label="Go to product 3" aria-current="false"></button>
+            <button class="SBHG-dot" type="button" aria-label="Go to product 4" aria-current="false"></button>
+            <button class="SBHG-dot" type="button" aria-label="Go to product 5" aria-current="false"></button>
+            <button class="SBHG-dot" type="button" aria-label="Go to product 6" aria-current="false"></button>
+          </div>
+          <button class="SBHG-button SBHG-see-all" type="button" disabled
+                  aria-disabled="true">SEE ALL</button>
         </div>
       </div>
     </section>

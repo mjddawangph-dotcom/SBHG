@@ -231,6 +231,8 @@ body::after {
 }
 
 .SBHG-button:disabled {
+  opacity: .38;
+  cursor: not-allowed;
   background: var(--ink);
   color: var(--bone);
   border-color: var(--haze);

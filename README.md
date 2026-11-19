@@ -76,7 +76,7 @@ python3 -m http.server 8099 --bind 127.0.0.1
 | Hero kicker | `SAVED BY HIS GRACE` |
 | Hero quote scroller | shirt typography, scrolls up, 28s loop, parks under reduced motion |
 | Manifesto | `BORN IN TUKSO / SAVED BY GRACE / KALOOKAN, PH` (3 masked lines, max 155px) |
-| Collection | 6 live listings mirrored from Carousell (see Products) |
+| Collection | 6 live listings mirrored from Carousell; swipe gallery with dots (see Products) |
 | Contact | socials + shipping + Caloocan map — no email/form (removed 2026-11-20) |
 | Footer | socials live, year filled by JS |
 
@@ -101,6 +101,12 @@ Six cards mirror the Carousell shop; each card is an `<article data-tile>` carry
 | 04 | Taksil Raglan Sweatshirt | PHP 680 | Lightly used |
 | 05 | Taksil Ripstop Polo | PHP 450 (was 800) | Like new |
 | 06 | Wavvy Logo Reversible Basketball Shorts | PHP 650 | Lightly used |
+
+The collection is a **swipe gallery**, not a pinned scroll animation: the row is a
+native horizontal scroller (`scroll-snap-type: x mandatory`, hidden scrollbar),
+drag-able with a mouse, arrow-key navigable, with indicator dots whose active state
+grows into a pill (`.SBHG-dot.is-active`). The **SEE ALL** button is deliberately
+`disabled` until a shop page exists.
 
 Photos live in `assets/products/<nn>-<slug>-{front,back}.jpg`, cropped/optimised to about
 675x900, JPEG q84. To add or replace an item: drop the photo in, update the `<article>`
