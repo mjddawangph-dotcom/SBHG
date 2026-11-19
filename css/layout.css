@@ -489,9 +489,42 @@ main {
   overflow-wrap: anywhere;
 }
 
-.SBHG-social-placeholder {
+.SBHG-socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 30px;
   margin-top: 50px;
-  overflow-wrap: anywhere;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .09em;
+}
+
+.SBHG-socials a,
+.SBHG-footer-socials a,
+.SBHG-dialog-link a {
+  color: var(--bone);
+  text-decoration: none;
+  border-bottom: 1px solid var(--violet);
+}
+
+.SBHG-socials a:hover,
+.SBHG-socials a:focus-visible,
+.SBHG-footer-socials a:hover,
+.SBHG-footer-socials a:focus-visible,
+.SBHG-dialog-link a:hover,
+.SBHG-dialog-link a:focus-visible {
+  border-bottom-color: var(--bone);
+}
+
+.SBHG-shipping {
+  margin-top: 16px;
+  color: var(--haze);
+}
+
+.SBHG-footer-socials {
+  display: flex;
+  gap: 16px;
+  margin: 0;
 }
 
 .SBHG-footer {

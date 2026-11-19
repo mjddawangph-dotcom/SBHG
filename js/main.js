@@ -207,7 +207,20 @@
       }
 
       opener = button;
+
+      const tile = button.closest("[data-tile]");
+      const nameField = document.getElementById("SBHG-dialog-name");
+      const priceField = document.getElementById("SBHG-dialog-price");
+
       title.textContent = "ITEM " + number;
+
+      if (tile && nameField) {
+        nameField.textContent = tile.getAttribute("data-name") || "SBHG";
+      }
+
+      if (tile && priceField) {
+        priceField.textContent = tile.getAttribute("data-price") || "";
+      }
 
       /*
         A nonmodal native dialog preserves the page's native scrolling.
