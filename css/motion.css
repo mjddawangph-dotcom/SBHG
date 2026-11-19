@@ -110,29 +110,6 @@
   transform: translateY(var(--SBHG-hero-lift)) scale(var(--SBHG-hero-scale));
 }
 
-.SBHG-motion .SBHG-hero-wipe::after {
-  content: "";
-  position: absolute;
-  inset: -20% -10%;
-  background: var(--void);
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 83%);
-  transform: translateY(var(--SBHG-hero-wipe, -150%));
-  z-index: 20;
-  pointer-events: none;
-}
-
-.SBHG-motion .SBHG-hero-wipe.SBHG-wipe-tear::before {
-  content: "";
-  position: absolute;
-  inset-inline: 0;
-  top: 44%;
-  height: 1px;
-  background: var(--c-yellow);
-  opacity: .5;
-  transform: rotate(-7deg);
-  z-index: 21;
-  pointer-events: none;
-}
 
 .SBHG-motion .SBHG-seam::after {
   transform: translateX(var(--SBHG-seam-x, 105%));
@@ -296,12 +273,6 @@
 
   .SBHG-motion.SBHG-native .SBHG-hero-scroll {
     animation: SBHG-native-hero 1s linear both;
-    animation-timeline: --SBHG-hero;
-    animation-range: exit 0% exit 100%;
-  }
-
-  .SBHG-motion.SBHG-native .SBHG-hero-wipe::after {
-    animation: SBHG-native-hero-wipe 1s linear both;
     animation-timeline: --SBHG-hero;
     animation-range: exit 0% exit 100%;
   }
