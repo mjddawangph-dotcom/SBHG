@@ -75,7 +75,7 @@ python3 -m http.server 8099 --bind 127.0.0.1
 |---|---|
 | Hero kicker | `SAVED BY HIS GRACE` |
 | Hero quote scroller | shirt typography, scrolls up, 28s loop, parks under reduced motion |
-| Manifesto | **placeholder** `[PLACEHOLDER: MANIFESTO STATEMENT]` |
+| Manifesto | `BORN IN TUKSO / SAVED BY GRACE / KALOOKAN, PH` (3 masked lines, max 155px) |
 | Collection | 6 tiles, **placeholder** names/prices/images |
 | Contact | socials + shipping live; form endpoint **placeholder** (JOIN disabled) |
 | Footer | socials live, year filled by JS |

@@ -293,7 +293,7 @@ main {
   position: relative;
   width: 100%;
   font-family: var(--display);
-  font-size: clamp(40px, 10.5vw, 170px);
+  font-size: clamp(40px, 8vw, 150px);
   font-weight: var(--display-weight);
   line-height: .88;
   letter-spacing: -.03em;
@@ -637,7 +637,7 @@ main {
   }
 
   .SBHG-statement {
-    font-size: clamp(40px, 10vw, 105px);
+    font-size: clamp(24px, 8vw, 96px);
   }
 }
 
