@@ -318,6 +318,23 @@ main {
   padding-bottom: .08em;
 }
 
+/* Hidden only when JS is running, so no-JS readers still see the statement. */
+.SBHG-js .SBHG-statement-line {
+  transform: translateY(110%);
+  transition: transform .9s cubic-bezier(.2, .7, .2, 1);
+}
+
+.SBHG-js .SBHG-statement-line.is-in {
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .SBHG-js .SBHG-statement-line {
+    transform: none;
+    transition: none;
+  }
+}
+
 .SBHG-accent {
   color: var(--logo-yellow);
 }

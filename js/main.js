@@ -722,6 +722,7 @@
     initGallery();
 
     const modules = [
+      ["type", window.SBHG.type],
       ["heroFan", window.SBHG.heroFan]
     ];
 

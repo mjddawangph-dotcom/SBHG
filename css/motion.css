@@ -146,10 +146,6 @@
     overflow: clip;
   }
 
-  .SBHG-motion .SBHG-statement-line {
-    transform: translateY(var(--SBHG-line-y, 0%));
-  }
-
   .SBHG-motion .SBHG-manifesto-dots {
     transform: translateY(var(--SBHG-manifesto-drift));
   }
