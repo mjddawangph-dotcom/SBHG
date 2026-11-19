@@ -476,6 +476,25 @@ main {
   color: var(--haze);
 }
 
+.SBHG-contact-map {
+  margin: 36px 0 0;
+  width: min(420px, 100%);
+}
+
+.SBHG-contact-map img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--violet);
+  filter: saturate(.7) contrast(1.08) brightness(.94);
+  clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 0 100%);
+}
+
+.SBHG-contact-map figcaption {
+  margin-top: 10px;
+  color: var(--haze);
+}
+
 .SBHG-footer-socials {
   display: flex;
   gap: 16px;

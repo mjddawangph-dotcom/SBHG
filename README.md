@@ -77,7 +77,7 @@ python3 -m http.server 8099 --bind 127.0.0.1
 | Hero quote scroller | shirt typography, scrolls up, 28s loop, parks under reduced motion |
 | Manifesto | `BORN IN TUKSO / SAVED BY GRACE / KALOOKAN, PH` (3 masked lines, max 155px) |
 | Collection | 6 tiles, **placeholder** names/prices/images |
-| Contact | socials + shipping only — no email/form (removed 2026-11-20) |
+| Contact | socials + shipping + Caloocan map — no email/form (removed 2026-11-20) |
 | Footer | socials live, year filled by JS |
 
 Live copy: Instagram <https://www.instagram.com/brgy.sbhg/>, Facebook
