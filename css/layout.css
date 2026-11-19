@@ -238,7 +238,7 @@ main {
 }
 
 .SBHG-manifesto {
-  background: rgb(26 14 34 / 46%);
+  background: var(--bruise);
 }
 
 .SBHG-manifesto-pin {
@@ -428,7 +428,7 @@ main {
 }
 
 .SBHG-contact {
-  background: rgb(26 14 34 / 46%);
+  background: var(--bruise);
   padding: 110px 0 100px;
 }
 
