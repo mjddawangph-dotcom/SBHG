@@ -512,6 +512,19 @@
     const video = document.querySelector(".SBHG-hero-video");
     const tasks = [];
     let done = 0;
+
+    /*
+      No single asset may hold the screen: each task is capped so the paced
+      4s finish is reachable even when video or a font is slow.
+    */
+    function capped(promise, ms) {
+      return Promise.race([
+        promise,
+        new Promise(function (resolve) {
+          window.setTimeout(resolve, ms);
+        })
+      ]);
+    }
     let finished = false;
 
     function paint(progress) {
@@ -537,6 +550,7 @@
       }
 
       finished = true;
+      window.clearInterval(ticker);
       paint(1);
       loader.classList.add("is-done");
       document.dispatchEvent(new CustomEvent("SBHG:loaded"));
@@ -553,7 +567,7 @@
       }
     }
 
-    tasks.push(new Promise(function (resolve) {
+    tasks.push(capped(new Promise(function (resolve) {
       if (!hero) {
         resolve();
         return;
@@ -574,9 +588,9 @@
 
       hero.addEventListener("load", settle, { once: true });
       hero.addEventListener("error", resolve, { once: true });
-    }));
+    }), 2500));
 
-    tasks.push(new Promise(function (resolve) {
+    tasks.push(capped(new Promise(function (resolve) {
       if (!video) {
         resolve();
         return;
@@ -588,37 +602,64 @@
       }
 
       video.addEventListener("loadeddata", resolve, { once: true });
+      video.addEventListener("loadedmetadata", resolve, { once: true });
       video.addEventListener("error", resolve, { once: true });
-    }));
+    }), 1500));
 
     if (document.fonts && document.fonts.ready) {
-      tasks.push(document.fonts.ready);
+      tasks.push(capped(document.fonts.ready, 2000));
     }
 
-    tasks.push(new Promise(function (resolve) {
+    tasks.push(capped(new Promise(function (resolve) {
       if (document.readyState === "complete") {
         resolve();
         return;
       }
 
       window.addEventListener("load", resolve, { once: true });
-    }));
+    }), 3000));
 
     const total = tasks.length;
+    const minimum = 4000;
+    const started = performance.now();
+    let ticker = 0;
+    let realProgress = 0;
+    let ready = false;
+
+    /*
+      The bar never outruns real loading, but it is paced so the screen lasts
+      about four seconds even when everything is cached.
+    */
+    function frame() {
+      if (finished) {
+        return;
+      }
+
+      const elapsed = performance.now() - started;
+      const paced = Math.min(1, elapsed / minimum);
+
+      paint(Math.min(realProgress, paced));
+
+      if (ready && elapsed >= minimum) {
+        finish();
+      }
+    }
 
     paint(0);
+    ticker = window.setInterval(frame, 100);
 
     tasks.forEach(function (task) {
       task.then(function () {
         done += 1;
-        paint(done / total);
+        realProgress = done / total;
 
         if (done >= total) {
-          finish();
+          ready = true;
         }
       });
     });
 
+    /* Hard ceiling: never hold the page longer than this, even on a slow link. */
     window.setTimeout(finish, 8000);
   }
 
