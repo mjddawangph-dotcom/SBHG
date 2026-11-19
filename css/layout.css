@@ -120,11 +120,11 @@ main {
 
 .SBHG-hero-stage {
   position: absolute;
-  bottom: 3vh;
-  bottom: 3svh;
+  bottom: 5vh;
+  bottom: 5svh;
   left: 50%;
-  height: 92vh;
-  height: 92svh;
+  height: 80vh;
+  height: 80svh;
   width: min(78vw, 52svh);
   transform: translateX(-50%);
   perspective: 1400px;
@@ -138,6 +138,11 @@ main {
   inset: 0;
   transform-origin: 50% 100%;
   transform-style: preserve-3d;
+}
+
+.SBHG-hero-stage .SBHG-hero-original,
+.SBHG-hero-stage .SBHG-hero-plane {
+  position: absolute;
 }
 
 .SBHG-hero-original {
@@ -619,9 +624,9 @@ main {
   }
 
   .SBHG-hero-stage {
-    bottom: 4svh;
-    height: 66vh;
-    height: 66svh;
+    bottom: 5svh;
+    height: 58vh;
+    height: 58svh;
     width: min(78vw, 39svh);
   }
 
@@ -727,6 +732,6 @@ main {
 @media (min-width: 1440px) {
   .SBHG-hero-stage {
     width: 58svh;
-    height: 92svh;
+    height: 80svh;
   }
 }
