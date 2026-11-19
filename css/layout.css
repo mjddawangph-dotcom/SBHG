@@ -404,6 +404,20 @@ main {
   overflow: clip;
 }
 
+.SBHG-product-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 1;
+}
+
+.SBHG-product-image .SBHG-halftone {
+  z-index: 2;
+}
+
 .SBHG-product-image > span:not(.SBHG-tile-cover) {
   position: relative;
   z-index: 2;
@@ -568,7 +582,15 @@ main {
 
 .SBHG-product-dialog {
   position: fixed;
-  margin: auto;
+  top: 50%;
+  left: 50%;
+  z-index: 120;
+  background: var(--ink);
+  border: 1px solid var(--violet);
+  color: var(--bone);
+  transform: translate(-50%, -50%);
+  margin: 0;
+  overflow: auto;
   width: min(600px, calc(100vw - 36px));
   max-height: calc(100vh - 48px);
   max-height: calc(100dvh - 48px);
@@ -595,12 +617,38 @@ main {
   margin: 16px 0;
 }
 
-.SBHG-dialog-image {
-  min-height: 180px;
-  display: flex;
-  align-items: flex-end;
-  padding: 18px;
-  background: var(--bruise) url("../assets/noise.svg");
+.SBHG-dialog-media {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+@media (max-width: 767px) {
+  .SBHG-dialog-media {
+    grid-template-columns: 1fr;
+  }
+}
+
+.SBHG-dialog-photo {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 46vh;
+  object-fit: contain;
+  border: 1px solid var(--violet);
+  background: var(--ink);
+}
+
+.SBHG-dialog-link a {
+  color: var(--bone);
+  text-decoration: none;
+  border-bottom: 1px solid var(--violet);
+}
+
+.SBHG-dialog-link a:hover,
+.SBHG-dialog-link a:focus-visible {
+  border-bottom-color: var(--bone);
 }
 
 .SBHG-dialog-inner form {

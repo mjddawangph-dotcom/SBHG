@@ -207,7 +207,54 @@
       }
 
       opener = button;
+
+      const tile = button.closest("[data-tile]");
+      const nameField = document.getElementById("SBHG-dialog-name");
+      const priceField = document.getElementById("SBHG-dialog-price");
+      const conditionField = document.getElementById("SBHG-dialog-condition");
+      const photo = document.getElementById("SBHG-dialog-image");
+      const photoBack = document.getElementById("SBHG-dialog-image-back");
+      const cta = document.getElementById("SBHG-dialog-cta");
+
       title.textContent = "ITEM " + number;
+
+      if (tile) {
+        const name = tile.getAttribute("data-name") || "SBHG";
+        const front = tile.getAttribute("data-image");
+        const back = tile.getAttribute("data-image-back");
+
+        if (nameField) {
+          nameField.textContent = name;
+        }
+
+        if (priceField) {
+          priceField.textContent = tile.getAttribute("data-price") || "";
+        }
+
+        if (conditionField) {
+          conditionField.textContent = tile.getAttribute("data-condition") || "";
+        }
+
+        if (photo && front) {
+          photo.src = front;
+          photo.alt = name + ", front";
+        }
+
+        if (photoBack) {
+          if (back) {
+            photoBack.src = back;
+            photoBack.alt = name + ", back";
+            photoBack.hidden = false;
+          } else {
+            photoBack.hidden = true;
+          }
+        }
+
+        if (cta) {
+          cta.href = tile.getAttribute("data-url") ||
+            "https://www.carousell.ph/u/brgy.sbhg";
+        }
+      }
 
       /*
         A nonmodal native dialog preserves the page's native scrolling.
