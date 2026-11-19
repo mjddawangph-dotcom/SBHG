@@ -3,17 +3,17 @@
   Without JavaScript the default layout is visible and static.
 */
 
-@keyframes SBHG-quote-down {
+@keyframes SBHG-quote-up {
   from {
-    transform: translate3d(0, -50%, 0);
+    transform: translate3d(0, 0, 0);
   }
   to {
-    transform: translate3d(0, 0, 0);
+    transform: translate3d(0, -50%, 0);
   }
 }
 
 .SBHG-motion .SBHG-quote-track {
-  animation: SBHG-quote-down 34s linear infinite;
+  animation: SBHG-quote-up 28s linear infinite;
 }
 
 /*

@@ -6,7 +6,7 @@ html {
 
 body {
   min-width: 0;
-  background: var(--void);
+  background: transparent;
   color: var(--bone);
   font-family: var(--mono);
   font-size: var(--ui-size);
@@ -17,7 +17,11 @@ body {
   isolation: isolate;
 }
 
-main,
+main {
+  position: relative;
+  z-index: 1;
+}
+
 .SBHG-section,
 .SBHG-hero,
 .SBHG-collection-window,
@@ -97,7 +101,7 @@ main,
   min-height: 480px;
   overflow: hidden;
   overflow: clip;
-  background: var(--void);
+  background: transparent;
 }
 
 .SBHG-hero-wipe {
@@ -153,16 +157,24 @@ main,
   opacity: 0;
 }
 
+.SBHG-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: clip;
+  pointer-events: none;
+  background: var(--void);
+}
+
 .SBHG-hero-video {
   position: absolute;
   inset: 0;
-  z-index: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   pointer-events: none;
-  opacity: .42;
-  filter: saturate(.45) contrast(1.15) brightness(.55);
+  opacity: .5;
+  filter: saturate(.55) contrast(1.12) brightness(.62);
   background: var(--void);
 }
 
@@ -194,8 +206,8 @@ main,
   width: 100%;
   height: auto;
   max-width: none;
-  margin-bottom: 10svh;
-  margin-bottom: 10vh;
+  margin-bottom: 3svh;
+  margin-bottom: 3vh;
 }
 
 .SBHG-hero-kicker {
@@ -226,7 +238,7 @@ main,
 }
 
 .SBHG-manifesto {
-  background: var(--bruise);
+  background: rgb(26 14 34 / 46%);
 }
 
 .SBHG-manifesto-pin {
@@ -292,7 +304,7 @@ main,
 }
 
 .SBHG-collection {
-  background: var(--ink);
+  background: rgb(12 8 16 / 38%);
 }
 
 .SBHG-collection-pin {
@@ -416,7 +428,7 @@ main,
 }
 
 .SBHG-contact {
-  background: var(--bruise);
+  background: rgb(26 14 34 / 46%);
   padding: 110px 0 100px;
 }
 
@@ -475,8 +487,10 @@ main,
 }
 
 .SBHG-footer {
+  position: relative;
+  z-index: 1;
   padding: 76px var(--page-gutter) 30px;
-  background: var(--void);
+  background: rgb(6 4 7 / 52%);
 }
 
 .SBHG-footer-baseline {
