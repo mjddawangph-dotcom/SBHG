@@ -308,9 +308,12 @@ main {
   z-index: 2;
 }
 
+/* The mask must clip on every breakpoint: the lines wait below the box at
+   translateY(115%), and without the clip they are painted in plain sight. */
 .SBHG-line-mask {
   display: block;
-  overflow: visible;
+  overflow: hidden;
+  overflow: clip;
 }
 
 .SBHG-statement-line {

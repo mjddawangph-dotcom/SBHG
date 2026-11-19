@@ -141,11 +141,6 @@
     min-height: 0;
   }
 
-  .SBHG-motion .SBHG-line-mask {
-    overflow: hidden;
-    overflow: clip;
-  }
-
   .SBHG-motion .SBHG-manifesto-dots {
     transform: translateY(var(--SBHG-manifesto-drift));
   }
