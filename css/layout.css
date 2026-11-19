@@ -120,11 +120,13 @@ main {
 
 .SBHG-hero-stage {
   position: absolute;
-  bottom: 5vh;
-  bottom: 5svh;
+  bottom: 2vh;
+  bottom: 2svh;
   left: 50%;
-  height: 80vh;
-  height: 80svh;
+  /* The PNG carries 7.5% empty space above the head; dividing by 0.925 lets the
+     figure fill the space between header and fold without clipping. */
+  height: calc((100vh - var(--header-height) - 2vh - 8px) / 0.925);
+  height: calc((100svh - var(--header-height) - 2svh - 8px) / 0.925);
   width: min(78vw, 52svh);
   transform: translateX(-50%);
   perspective: 1400px;
@@ -624,9 +626,7 @@ main {
   }
 
   .SBHG-hero-stage {
-    bottom: 5svh;
-    height: 58vh;
-    height: 58svh;
+    bottom: 3svh;
     width: min(78vw, 39svh);
   }
 
@@ -732,6 +732,5 @@ main {
 @media (min-width: 1440px) {
   .SBHG-hero-stage {
     width: 58svh;
-    height: 80svh;
   }
 }
