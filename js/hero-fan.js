@@ -161,15 +161,16 @@
               ? 0.92 - index * 0.07
               : 0.92 - index * 0.028;
 
-            const x = (index % 2 === 0 ? -1 : 1) *
-              (mobile ? 4 + index * 3 : 8 + index * 6);
+            const side = index % 2 === 0 ? -1 : 1;
+            const x = side * (mobile ? 34 + index * 34 : 56 + index * 30);
 
             const y = mobile ? -2 - index * 2 : -4 - index * 4;
-            const opacity = plate === "silhouette" ? 0.28 : 0.4;
+            const spin = side * (mobile ? 2.6 + index * 1.8 : 1.8 + index * 1.1);
+            const opacity = plate === "silhouette" ? 0.55 : 0.85;
 
             const extended =
               "translate3d(" + x + "px," + y + "px," + depth +
-              "px) scale(" + scale + ")";
+              "px) rotate(" + spin + "deg) scale(" + scale + ")";
 
             plane.dataset.extendedTransform = extended;
             plane.dataset.extendedOpacity = String(opacity);
@@ -178,7 +179,7 @@
               plane,
               [
                 {
-                  transform: "translate3d(0,0,0) scale(1)",
+                  transform: "translate3d(0,0,0) rotate(0deg) scale(1)",
                   opacity: 0
                 },
                 {
@@ -211,7 +212,7 @@
                   opacity: Number(plane.dataset.extendedOpacity)
                 },
                 {
-                  transform: "translate3d(0,0,0) scale(1)",
+                  transform: "translate3d(0,0,0) rotate(0deg) scale(1)",
                   opacity: 0
                 }
               ],
