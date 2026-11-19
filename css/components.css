@@ -181,14 +181,12 @@ html.SBHG-loading body {
 
 .SBHG-nav a:not(.SBHG-wordmark),
 .SBHG-menu a,
-.SBHG-progress a,
 .SBHG-product-meta button {
   position: relative;
 }
 
 .SBHG-nav a:not(.SBHG-wordmark)::after,
 .SBHG-menu a::after,
-.SBHG-progress a::after,
 .SBHG-product-meta button::after {
   content: "";
   position: absolute;
@@ -203,7 +201,6 @@ html.SBHG-loading body {
 
 .SBHG-nav a:hover::after,
 .SBHG-menu a:hover::after,
-.SBHG-progress a:hover::after,
 .SBHG-product-meta button:hover::after,
 .SBHG-nav a:focus-visible::after,
 .SBHG-menu a:focus-visible::after,

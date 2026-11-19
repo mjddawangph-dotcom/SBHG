@@ -643,12 +643,6 @@ main {
   transform-origin: top;
 }
 
-.SBHG-progress a {
-  position: relative;
-  background: var(--void);
-  padding-left: 5px;
-}
-
 .SBHG-product-dialog {
   position: fixed;
   top: 50%;
