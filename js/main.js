@@ -228,7 +228,9 @@
         }
 
         if (priceField) {
-          priceField.textContent = tile.getAttribute("data-price") || "";
+          const price = tile.getAttribute("data-price") || "";
+          const was = tile.getAttribute("data-price-was");
+          priceField.textContent = was ? price + " (was " + was + ")" : price;
         }
 
         if (conditionField) {

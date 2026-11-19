@@ -435,6 +435,12 @@ main {
   overflow-wrap: anywhere;
 }
 
+.SBHG-price-was {
+  margin-left: 8px;
+  text-decoration: line-through;
+  opacity: .55;
+}
+
 .SBHG-product-meta h3 {
   font: inherit;
   font-weight: var(--display-weight);
