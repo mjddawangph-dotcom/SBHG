@@ -76,7 +76,7 @@ python3 -m http.server 8099 --bind 127.0.0.1
 | Hero kicker | `SAVED BY HIS GRACE` |
 | Hero quote scroller | shirt typography, scrolls up, 28s loop, parks under reduced motion |
 | Manifesto | `BORN IN TUKSO / SAVED BY GRACE / KALOOKAN, PH` (3 masked lines, max 155px) |
-| Collection | 6 tiles, **placeholder** names/prices/images |
+| Collection | 6 live listings mirrored from Carousell (see Products) |
 | Contact | socials + shipping + Caloocan map — no email/form (removed 2026-11-20) |
 | Footer | socials live, year filled by JS |
 
@@ -85,6 +85,27 @@ Live copy: Instagram <https://www.instagram.com/brgy.sbhg/>, Facebook
 <https://www.carousell.ph/u/brgy.sbhg>. Shipping: nationwide via J&T Express,
 same-day via Lalamove, Kalookan. Sales copy on Carousell: "Everything on sale —
 30–50% off…".
+
+## Products
+
+Six cards mirror the Carousell shop; each card is an `<article data-tile>` carrying
+`data-name`, `data-price`, optional `data-price-was`, `data-condition`, `data-url`,
+`data-image` and optional `data-image-back`. The card shows the front photo; the dialog
+(click VIEW) shows both photos, the price, the condition and a **BUY ON CAROSELL** link.
+
+| # | Product | Price | Condition |
+|---|---|---|---|
+| 01 | The Prayer Vince Carter Nets Jersey | PHP 2,000 | Brand new |
+| 02 | The Prayer Wembanyama Jersey | PHP 2,000 | Brand new |
+| 03 | Ambagan Full-Zip Track Jacket | PHP 500 (was 850) | Brand new |
+| 04 | Taksil Raglan Sweatshirt | PHP 680 | Lightly used |
+| 05 | Taksil Ripstop Polo | PHP 450 (was 800) | Like new |
+| 06 | Wavvy Logo Reversible Basketball Shorts | PHP 650 | Lightly used |
+
+Photos live in `assets/products/<nn>-<slug>-{front,back}.jpg`, cropped/optimised to about
+675x900, JPEG q84. To add or replace an item: drop the photo in, update the `<article>`
+attributes and the `<img>`/meta text, then bump the `?v=` token. Prices are a snapshot —
+Carousell is the source of truth and each card links to its listing.
 
 ## Deploy
 
