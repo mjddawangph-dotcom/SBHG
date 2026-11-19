@@ -134,6 +134,10 @@ main {
   isolation: isolate;
 }
 
+.SBHG-hero-picture {
+  display: contents;
+}
+
 .SBHG-hero-original,
 .SBHG-hero-plane {
   position: absolute;
@@ -748,6 +752,36 @@ main {
 
   .SBHG-collection-window {
     overflow: visible;
+  }
+
+  .SBHG-dots {
+    display: none;
+  }
+
+  .SBHG-gallery-bar {
+    justify-content: flex-end;
+    margin-top: 30px;
+  }
+
+  .SBHG-product-meta button {
+    min-height: 44px;
+    padding: 12px 0;
+  }
+
+  .SBHG-menu-trigger {
+    min-height: 44px;
+    min-width: 44px;
+    padding: 12px 14px;
+  }
+
+  .SBHG-footer-socials {
+    flex-wrap: wrap;
+    gap: 8px 16px;
+  }
+
+  .SBHG-footer-socials a {
+    display: inline-block;
+    padding: 10px 2px;
   }
 
   .SBHG-collection-row {

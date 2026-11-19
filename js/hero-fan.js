@@ -100,6 +100,11 @@
 
         const copyImage = image.cloneNode(false);
 
+        /* Reuse whatever the browser actually loaded (WebP on mobile/desktop). */
+        if (image.currentSrc) {
+          copyImage.src = image.currentSrc;
+        }
+
         copyImage.removeAttribute("id");
         copyImage.removeAttribute("fetchpriority");
         copyImage.setAttribute("alt", "");

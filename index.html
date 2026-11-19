@@ -9,25 +9,28 @@
   <meta property="og:description" content="Saved By His Grace. Clothing.">
   <title>SBHG</title>
 
-  <link rel="preload" href="assets/hero.png" as="image" fetchpriority="high">
+  <link rel="preload" href="assets/hero-900.webp" as="image" media="(max-width: 767px)">
+  <link rel="preload" href="assets/hero-1536.webp" as="image" media="(min-width: 768px)">
   <link rel="preload" href="assets/fonts/orbitron-latin.woff2" as="font"
         type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="css/reset.css?v=20261120w">
-  <link rel="stylesheet" href="css/tokens.css?v=20261120w">
-  <link rel="stylesheet" href="css/layout.css?v=20261120w">
-  <link rel="stylesheet" href="css/components.css?v=20261120w">
-  <link rel="stylesheet" href="css/motion.css?v=20261120w">
+  <link rel="stylesheet" href="css/reset.css?v=20261120z">
+  <link rel="stylesheet" href="css/tokens.css?v=20261120z">
+  <link rel="stylesheet" href="css/layout.css?v=20261120z">
+  <link rel="stylesheet" href="css/components.css?v=20261120z">
+  <link rel="stylesheet" href="css/motion.css?v=20261120z">
 
-  <script defer src="js/hero-fan.js?v=20261120w"></script>
-  <script defer src="js/glitch.js?v=20261120w"></script>
-  <script defer src="js/scroll.js?v=20261120w"></script>
-  <script defer src="js/main.js?v=20261120w"></script>
+  <script defer src="js/hero-fan.js?v=20261120z"></script>
+  <script defer src="js/glitch.js?v=20261120z"></script>
+  <script defer src="js/scroll.js?v=20261120z"></script>
+  <script defer src="js/main.js?v=20261120z"></script>
 </head>
 <body>
   <div class="SBHG-bg" aria-hidden="true">
     <video class="SBHG-hero-video" autoplay muted loop playsinline
            preload="metadata" poster="assets/glitch-poster.jpg"
+           data-mobile-src="assets/glitch-background-mobile.mp4"
            tabindex="-1">
+      <source src="assets/glitch-background-mobile.mp4" media="(max-width: 767px)" type="video/mp4">
       <source src="assets/glitch-background.mp4" type="video/mp4">
     </video>
   </div>
@@ -154,10 +157,14 @@
           <div class="SBHG-hero-stage" id="SBHG-hero-stage">
             <div class="SBHG-hero-original SBHG-glitch-target"
                  id="SBHG-hero-original" data-glitch>
-              <img id="SBHG-hero-image" src="assets/hero.png"
-                   width="1536" height="2752"
-                   alt="SBHG supplied hero image"
-                   loading="eager" decoding="async" fetchpriority="high">
+              <picture class="SBHG-hero-picture">
+                <source media="(max-width: 767px)" srcset="assets/hero-900.webp" type="image/webp">
+                <source srcset="assets/hero-1536.webp" type="image/webp">
+                <img id="SBHG-hero-image" src="assets/hero.png"
+                     width="1536" height="2752"
+                     alt="SBHG supplied hero image"
+                     loading="eager" decoding="async" fetchpriority="high">
+              </picture>
             </div>
           </div>
         </div>

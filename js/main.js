@@ -459,6 +459,35 @@
     syncDots();
   }
 
+  /*
+    Chrome ignores `media` on <video><source>, so pick the lighter clip for
+    small screens here and let the <source> list stay as the no-JS fallback.
+  */
+  function initHeroVideo() {
+    const video = document.querySelector(".SBHG-hero-video");
+    const small = window.matchMedia("(max-width: 767px)");
+
+    if (!video || !small.matches) {
+      return;
+    }
+
+    const mobileSource = video.getAttribute("data-mobile-src");
+
+    if (!mobileSource || video.getAttribute("src") === mobileSource) {
+      return;
+    }
+
+    video.setAttribute("src", mobileSource);
+
+    const playback = video.play();
+
+    if (playback && typeof playback.catch === "function") {
+      playback.catch(function () {
+        /* Autoplay refusal leaves the poster frame in place. */
+      });
+    }
+  }
+
   function initialize() {
     const root = document.documentElement;
     const year = document.getElementById("SBHG-year");
@@ -467,6 +496,7 @@
       year.textContent = String(new Date().getFullYear());
     }
 
+    initHeroVideo();
     initMenu();
     initProducts();
     initGallery();

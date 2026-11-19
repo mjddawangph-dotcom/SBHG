@@ -108,6 +108,10 @@ drag-able with a mouse, arrow-key navigable, with indicator dots whose active st
 grows into a pill (`.SBHG-dot.is-active`). The **SEE ALL** button is deliberately
 `disabled` until a shop page exists.
 
+Mobile uses lighter media: `hero-900.webp` (47 KB) via `<picture media>` and
+`glitch-background-mobile.mp4` (2.1 MB, 640x360), selected in JS because Chrome ignores
+`media` on `<video><source>`. Desktop gets `hero-1536.webp` (90 KB) and the 9.1 MB clip.
+
 Photos live in `assets/products/<nn>-<slug>-{front,back}.jpg`, cropped/optimised to about
 675x900, JPEG q84. To add or replace an item: drop the photo in, update the `<article>`
 attributes and the `<img>`/meta text, then bump the `?v=` token. Prices are a snapshot —
