@@ -86,6 +86,15 @@ Live copy: Instagram <https://www.instagram.com/brgy.sbhg/>, Facebook
 same-day via Lalamove, Kalookan. Sales copy on Carousell: "Everything on sale —
 30–50% off…".
 
+## Loading screen
+
+The first load of a browser session shows an overlay (`#SBHG-loader`) that blocks scroll
+until the hero image is decoded, the video's first frame is ready, the webfont and the
+window `load` event have resolved — capped at 8 s. Progress is real: the yellow star fill
+rises inside the pink outline (`#SBHG-loader-fill`, y 59..165 of the SVG). It is skipped
+on later loads via `sessionStorage.SBHG-loaded`, hidden entirely without JS, and
+dispatches `SBHG:loaded`, which is what releases the hero plate intro.
+
 ## Products
 
 Six cards mirror the Carousell shop; each card is an `<article data-tile>` carrying

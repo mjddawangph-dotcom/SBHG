@@ -488,6 +488,140 @@
     }
   }
 
+  /*
+    First-load screen. Progress is real: hero image decode, video first frame,
+    webfont, window load. The yellow fill height follows it. Capped at 8s so a
+    slow network cannot trap the page behind the overlay.
+  */
+  function initLoader() {
+    const root = document.documentElement;
+    const loader = document.getElementById("SBHG-loader");
+    const pct = document.getElementById("SBHG-loader-pct");
+    const fill = document.getElementById("SBHG-loader-fill");
+
+    if (!root.classList.contains("SBHG-loading")) {
+      return;
+    }
+
+    if (!loader) {
+      root.classList.remove("SBHG-loading");
+      return;
+    }
+
+    const hero = document.getElementById("SBHG-hero-image");
+    const video = document.querySelector(".SBHG-hero-video");
+    const tasks = [];
+    let done = 0;
+    let finished = false;
+
+    function paint(progress) {
+      const value = Math.max(0, Math.min(1, progress));
+      /* The star path spans y 59..165; fill exactly that band. */
+      const top = 59;
+      const bottom = 165;
+      const height = value * (bottom - top);
+
+      if (fill) {
+        fill.setAttribute("height", height.toFixed(1));
+        fill.setAttribute("y", (bottom - height).toFixed(1));
+      }
+
+      if (pct) {
+        pct.textContent = Math.round(value * 100) + "%";
+      }
+    }
+
+    function finish() {
+      if (finished) {
+        return;
+      }
+
+      finished = true;
+      paint(1);
+      loader.classList.add("is-done");
+      document.dispatchEvent(new CustomEvent("SBHG:loaded"));
+
+      window.setTimeout(function () {
+        root.classList.remove("SBHG-loading");
+        loader.hidden = true;
+      }, 480);
+
+      try {
+        sessionStorage.setItem("SBHG-loaded", "1");
+      } catch (error) {
+        /* Private mode: the loader simply shows again next time. */
+      }
+    }
+
+    tasks.push(new Promise(function (resolve) {
+      if (!hero) {
+        resolve();
+        return;
+      }
+
+      function settle() {
+        if (hero.decode) {
+          hero.decode().then(resolve, resolve);
+        } else {
+          resolve();
+        }
+      }
+
+      if (hero.complete && hero.naturalWidth > 0) {
+        settle();
+        return;
+      }
+
+      hero.addEventListener("load", settle, { once: true });
+      hero.addEventListener("error", resolve, { once: true });
+    }));
+
+    tasks.push(new Promise(function (resolve) {
+      if (!video) {
+        resolve();
+        return;
+      }
+
+      if (video.readyState >= 2) {
+        resolve();
+        return;
+      }
+
+      video.addEventListener("loadeddata", resolve, { once: true });
+      video.addEventListener("error", resolve, { once: true });
+    }));
+
+    if (document.fonts && document.fonts.ready) {
+      tasks.push(document.fonts.ready);
+    }
+
+    tasks.push(new Promise(function (resolve) {
+      if (document.readyState === "complete") {
+        resolve();
+        return;
+      }
+
+      window.addEventListener("load", resolve, { once: true });
+    }));
+
+    const total = tasks.length;
+
+    paint(0);
+
+    tasks.forEach(function (task) {
+      task.then(function () {
+        done += 1;
+        paint(done / total);
+
+        if (done >= total) {
+          finish();
+        }
+      });
+    });
+
+    window.setTimeout(finish, 8000);
+  }
+
   function initialize() {
     const root = document.documentElement;
     const year = document.getElementById("SBHG-year");
@@ -496,6 +630,7 @@
       year.textContent = String(new Date().getFullYear());
     }
 
+    initLoader();
     initHeroVideo();
     initMenu();
     initProducts();

@@ -8,23 +8,50 @@
   <meta property="og:title" content="SBHG">
   <meta property="og:description" content="Saved By His Grace. Clothing.">
   <title>SBHG</title>
+  <script>
+    (function () {
+      try {
+        if (!sessionStorage.getItem("SBHG-loaded")) {
+          document.documentElement.classList.add("SBHG-loading");
+        }
+      } catch (error) {
+        document.documentElement.classList.add("SBHG-loading");
+      }
+    })();
+  </script>
 
   <link rel="preload" href="assets/hero-900.webp" as="image" media="(max-width: 767px)">
   <link rel="preload" href="assets/hero-1536.webp" as="image" media="(min-width: 768px)">
   <link rel="preload" href="assets/fonts/orbitron-latin.woff2" as="font"
         type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="css/reset.css?v=20261120z">
-  <link rel="stylesheet" href="css/tokens.css?v=20261120z">
-  <link rel="stylesheet" href="css/layout.css?v=20261120z">
-  <link rel="stylesheet" href="css/components.css?v=20261120z">
-  <link rel="stylesheet" href="css/motion.css?v=20261120z">
+  <link rel="stylesheet" href="css/reset.css?v=20261121a">
+  <link rel="stylesheet" href="css/tokens.css?v=20261121a">
+  <link rel="stylesheet" href="css/layout.css?v=20261121a">
+  <link rel="stylesheet" href="css/components.css?v=20261121a">
+  <link rel="stylesheet" href="css/motion.css?v=20261121a">
 
-  <script defer src="js/hero-fan.js?v=20261120z"></script>
-  <script defer src="js/glitch.js?v=20261120z"></script>
-  <script defer src="js/scroll.js?v=20261120z"></script>
-  <script defer src="js/main.js?v=20261120z"></script>
+  <script defer src="js/hero-fan.js?v=20261121a"></script>
+  <script defer src="js/glitch.js?v=20261121a"></script>
+  <script defer src="js/scroll.js?v=20261121a"></script>
+  <script defer src="js/main.js?v=20261121a"></script>
 </head>
 <body>
+  <div class="SBHG-loader" id="SBHG-loader" role="status" aria-live="polite"
+       aria-label="Loading SBHG">
+    <span class="SBHG-sr-only">Loading, please wait.</span>
+    <div class="SBHG-loader-inner">
+      <svg class="SBHG-loader-star" viewBox="58 53 118 118" aria-hidden="true">
+        <clipPath id="SBHG-loader-clip">
+          <rect id="SBHG-loader-fill" x="0" y="165" width="225" height="0"></rect>
+        </clipPath>
+        <path d="M 125,59 L 128,90 L 170,77 L 130,111 L 132,142 L 106.5,130 L 66,165 L 89,122 L 64,109.5 L 103,98 Z" fill="none" stroke="#FF6384" stroke-width="4"
+              stroke-linejoin="miter" stroke-miterlimit="10"></path>
+        <path d="M 125,59 L 128,90 L 170,77 L 130,111 L 132,142 L 106.5,130 L 66,165 L 89,122 L 64,109.5 L 103,98 Z" fill="#FFFF00" clip-path="url(#SBHG-loader-clip)"></path>
+      </svg>
+      <p class="SBHG-loader-meta SBHG-meta">LOADING <span id="SBHG-loader-pct" aria-hidden="true">0%</span></p>
+    </div>
+  </div>
+
   <div class="SBHG-bg" aria-hidden="true">
     <video class="SBHG-hero-video" autoplay muted loop playsinline
            preload="metadata" poster="assets/glitch-poster.jpg"

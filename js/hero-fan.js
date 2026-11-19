@@ -271,14 +271,26 @@
 
       image.addEventListener("error", settle, { once: true });
 
-      if (image.complete) {
-        if (image.naturalWidth > 0) {
-          start();
+      function boot() {
+        if (image.complete) {
+          if (image.naturalWidth > 0) {
+            start();
+          } else {
+            settle();
+          }
         } else {
-          settle();
+          image.addEventListener("load", start, { once: true });
         }
+      }
+
+      /*
+        Hold the intro until the loading screen is gone, so the plates play
+        where they can actually be seen.
+      */
+      if (document.documentElement.classList.contains("SBHG-loading")) {
+        document.addEventListener("SBHG:loaded", boot, { once: true });
       } else {
-        image.addEventListener("load", start, { once: true });
+        boot();
       }
 
       window.SBHG.heroFan.cancel = settle;
