@@ -350,7 +350,7 @@ main {
 
 .SBHG-product {
   position: relative;
-  flex: 0 0 33%;
+  flex: 0 0 25%;
   min-width: 0;
   overflow: hidden;
   overflow: clip;
@@ -358,39 +358,39 @@ main {
 }
 
 .SBHG-product-01 {
-  flex-basis: 33%;
+  flex-basis: 25%;
   margin-top: 12px;
 }
 
 .SBHG-product-02 {
-  flex-basis: 50%;
+  flex-basis: 25%;
   margin-top: 90px;
 }
 
 .SBHG-product-03 {
-  flex-basis: 40%;
+  flex-basis: 25%;
   margin-left: 5%;
   margin-top: 0;
 }
 
 .SBHG-product-04 {
-  flex-basis: 43%;
+  flex-basis: 25%;
   margin-top: 85px;
 }
 
 .SBHG-product-05 {
-  flex-basis: 50%;
+  flex-basis: 25%;
   margin-top: 12px;
 }
 
 .SBHG-product-06 {
-  flex-basis: 33%;
+  flex-basis: 25%;
   margin-top: 105px;
 }
 
 .SBHG-product-image {
   position: relative;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 1 / 1;
   background: var(--bruise);
   border: 1px solid var(--violet);
   display: flex;
@@ -398,19 +398,6 @@ main {
   padding: clamp(14px, 2vw, 30px);
   overflow: hidden;
   overflow: clip;
-}
-
-.SBHG-product-02 .SBHG-product-image,
-.SBHG-product-05 .SBHG-product-image {
-  aspect-ratio: 5 / 4;
-}
-
-.SBHG-product-03 .SBHG-product-image {
-  aspect-ratio: 1 / 1;
-}
-
-.SBHG-product-04 .SBHG-product-image {
-  aspect-ratio: 4 / 5;
 }
 
 .SBHG-product-image > span:not(.SBHG-tile-cover) {

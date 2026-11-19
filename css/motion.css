@@ -220,44 +220,20 @@
 
   .SBHG-motion .SBHG-product {
     flex: none;
-    width: 33vw;
+    width: 25vw;
     margin-left: 0;
     margin-top: 0;
   }
 
-  .SBHG-motion .SBHG-product-01 {
-    width: 33vw;
-    margin-top: 3svh;
-  }
-
-  .SBHG-motion .SBHG-product-02 {
-    width: 50vw;
-    margin-top: 10svh;
-  }
-
-  .SBHG-motion .SBHG-product-03 {
-    width: 40vw;
-    margin-top: 0;
-  }
-
-  .SBHG-motion .SBHG-product-04 {
-    width: 43vw;
-    margin-top: 8svh;
-  }
-
-  .SBHG-motion .SBHG-product-05 {
-    width: 50vw;
-    margin-top: 2svh;
-  }
-
-  .SBHG-motion .SBHG-product-06 {
-    width: 33vw;
-    margin-top: 11svh;
-  }
+  .SBHG-motion .SBHG-product-01 { margin-top: 2svh; }
+  .SBHG-motion .SBHG-product-02 { margin-top: 6svh; }
+  .SBHG-motion .SBHG-product-03 { margin-top: 0; }
+  .SBHG-motion .SBHG-product-04 { margin-top: 5svh; }
+  .SBHG-motion .SBHG-product-05 { margin-top: 1svh; }
+  .SBHG-motion .SBHG-product-06 { margin-top: 6svh; }
 
   .SBHG-motion .SBHG-product-image {
-    height: clamp(130px, 37svh, 440px);
-    aspect-ratio: auto;
+    aspect-ratio: 1 / 1;
   }
 }
 
