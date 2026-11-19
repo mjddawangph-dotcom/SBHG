@@ -3,20 +3,30 @@
   Without JavaScript the default layout is visible and static.
 */
 
-@keyframes SBHG-marquee-travel {
+@keyframes SBHG-quote-down {
+  from {
+    transform: translate3d(0, -50%, 0);
+  }
   to {
-    transform: translateX(calc(-1 * var(--SBHG-marquee-distance, 0px)));
+    transform: translate3d(0, 0, 0);
   }
 }
 
-.SBHG-motion .SBHG-marquee-belt {
-  animation: SBHG-marquee-travel 34s linear infinite;
+.SBHG-motion .SBHG-quote-track {
+  animation: SBHG-quote-down 34s linear infinite;
 }
 
-.SBHG-marquee:hover .SBHG-marquee-belt,
-.SBHG-marquee:focus-within .SBHG-marquee-belt,
-.SBHG-marquee.SBHG-paused .SBHG-marquee-belt {
-  animation-play-state: paused;
+/*
+  Reduced motion: the quote parks, only one copy is present.
+*/
+@media (prefers-reduced-motion: reduce) {
+  .SBHG-motion .SBHG-quote-track {
+    animation: none;
+  }
+
+  .SBHG-quote-art + .SBHG-quote-art {
+    display: none;
+  }
 }
 
 @keyframes SBHG-link-plate {
@@ -122,10 +132,6 @@
   transform: rotate(-7deg);
   z-index: 21;
   pointer-events: none;
-}
-
-.SBHG-motion .SBHG-marquee-drift {
-  transform: translateY(var(--SBHG-marquee-y));
 }
 
 .SBHG-motion .SBHG-seam::after {
@@ -276,12 +282,6 @@
     75%,
     100% {
       transform: translateY(0);
-    }
-  }
-
-  @keyframes SBHG-native-marquee {
-    to {
-      transform: translateY(-60svh);
     }
   }
 

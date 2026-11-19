@@ -61,12 +61,14 @@ body::after {
 }
 
 /*
-  LOGO — PLACEHOLDER WORDMARK, swap for client SVG
-  Replace only .SBHG-logo-art's contents. The outer layout remains intact.
+  LOGO — star mark (LOGO_STAR.svg) locked up with the SBHG wordmark.
+  Replace the img or the .SBHG-logo-art text independently.
 */
 .SBHG-wordmark {
   position: relative;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: .26em;
   flex: none;
   font-family: var(--display);
   font-size: var(--logo-size);
@@ -77,6 +79,13 @@ body::after {
   overflow: hidden;
   overflow: clip;
   padding: 4px 3px;
+}
+
+.SBHG-logo-star {
+  flex: none;
+  display: block;
+  width: auto;
+  height: 1.1em;
 }
 
 .SBHG-logo-art {
@@ -93,7 +102,6 @@ body::after {
 .SBHG-nav a:not(.SBHG-wordmark),
 .SBHG-menu a,
 .SBHG-progress a,
-.SBHG-scroll-marker,
 .SBHG-product-meta button {
   position: relative;
 }
@@ -124,8 +132,7 @@ body::after {
 }
 
 .SBHG-menu-trigger,
-.SBHG-menu-close,
-.SBHG-marquee-toggle {
+.SBHG-menu-close {
   position: relative;
   background: var(--ink);
   color: var(--bone);
@@ -141,65 +148,6 @@ body::after {
 
 .SBHG-menu-close {
   clip-path: polygon(8px 0, 100% 0, 100% 100%, 0 100%, 0 8px);
-}
-
-.SBHG-marquee {
-  position: relative;
-  min-height: var(--marquee-height);
-  background: rgb(6 4 7 / 88%);
-  border-top: 1px solid var(--violet);
-  border-bottom: 1px solid var(--violet);
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-  overflow: clip;
-}
-
-.SBHG-marquee-window {
-  width: 100%;
-  overflow: hidden;
-  overflow: clip;
-}
-
-.SBHG-marquee-belt {
-  display: flex;
-  width: max-content;
-  align-items: center;
-}
-
-.SBHG-marquee-track {
-  flex: none;
-  display: flex;
-  align-items: center;
-  gap: 32px;
-  padding-right: 32px;
-  white-space: nowrap;
-  font-family: var(--display);
-  font-size: clamp(27px, 3.3vw, 49px);
-  font-weight: var(--display-weight);
-  letter-spacing: -.03em;
-  line-height: 1;
-}
-
-.SBHG-banner-string {
-  display: block;
-}
-
-.SBHG-banner-separator {
-  display: block;
-}
-
-.SBHG-marquee-toggle {
-  position: absolute;
-  right: 8px;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 3;
-  padding: 5px 8px;
-}
-
-.SBHG-marquee-toggle:active {
-  transform: translateY(calc(-50% + 1px));
 }
 
 .SBHG-hero-original img {
@@ -444,13 +392,5 @@ body::after {
 }
 
 @media (max-width: 767px) {
-  .SBHG-marquee-track {
-    font-size: 27px;
-    gap: 24px;
-    padding-right: 24px;
-  }
 
-  .SBHG-marquee-toggle {
-    font-size: 10px;
-  }
 }

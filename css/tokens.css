@@ -1,8 +1,16 @@
 /*
-  Two system-font stacks, two requested weights, no remote requests.
-  font-display is only applicable to @font-face; no downloadable fonts
-  are required by this hand-off.
+  Self-hosted Orbitron (variable, wght 400-900) as the display face.
+  One woff2, no third-party request; system stack remains as fallback.
 */
+@font-face {
+  font-family: "Orbitron";
+  src: url("../assets/fonts/orbitron-latin.woff2") format("woff2-variations"),
+       url("../assets/fonts/orbitron-latin.woff2") format("woff2");
+  font-weight: 400 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --void: #060407;
   --ink: #0C0810;
@@ -14,8 +22,8 @@
   --c-magenta: #9E2A57;
   --c-yellow: #B8A333;
 
-  --display: Impact, Haettenschweiler, "Arial Narrow", "Liberation Sans Narrow",
-    sans-serif;
+  --display: "Orbitron", Impact, Haettenschweiler, "Arial Narrow",
+    "Liberation Sans Narrow", sans-serif;
   --mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
 
   --logo-size: clamp(36px, 5.5vw, 76px);
@@ -25,8 +33,6 @@
 
   --page-gutter: clamp(18px, 4vw, 76px);
   --header-height: 92px;
-  --marquee-height: clamp(44px, 6vh, 68px);
-  --marquee-height: clamp(44px, 6svh, 68px);
 
   --SBHG-progress: 0;
   --SBHG-velocity: 0;
@@ -36,14 +42,12 @@
   --SBHG-hero-lift: 0px;
   --SBHG-hero-scale: 1;
   --SBHG-hero-wipe: 0px;
-  --SBHG-marquee-y: 0px;
   --SBHG-manifesto-drift: 0%;
 }
 
 @media (max-width: 767px) {
   :root {
     --header-height: 76px;
-    --marquee-height: 44px;
   }
 }
 

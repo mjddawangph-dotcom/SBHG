@@ -110,11 +110,6 @@
               }
             }
 
-            @keyframes SBHG-js-marquee-out {
-              from { transform: translateY(0); }
-              to { transform: translateY(-60svh); }
-            }
-
             @keyframes SBHG-js-seam {
               from { transform: translateX(0); }
               to { transform: translateX(105%); }
@@ -184,12 +179,6 @@
 
             .SBHG-motion.SBHG-native .SBHG-hero-wipe::after {
               animation: SBHG-js-hero-wipe 1s linear both;
-              animation-timeline: --SBHG-js-hero;
-              animation-range: exit 0% exit 100%;
-            }
-
-            .SBHG-motion.SBHG-native .SBHG-marquee-drift {
-              animation: SBHG-js-marquee-out 1s linear both;
               animation-timeline: --SBHG-js-hero;
               animation-range: exit 0% exit 100%;
             }
@@ -275,34 +264,6 @@
                 animation-range: contain 0% contain 100%;
               }
             }
-          }
-
-          html:not(.SBHG-motion) .SBHG-marquee-track {
-            white-space: normal;
-            width: 100%;
-            padding: 12px 18px;
-            justify-content: center;
-            text-align: center;
-            font-size: clamp(18px, 3vw, 36px);
-          }
-
-          html:not(.SBHG-motion) .SBHG-marquee-belt {
-            width: 100%;
-            animation: none;
-            transform: none;
-          }
-
-          html:not(.SBHG-motion) .SBHG-marquee-track[aria-hidden="true"],
-          html:not(.SBHG-motion) .SBHG-banner-separator {
-            display: none;
-          }
-
-          html:not(.SBHG-motion) .SBHG-marquee-toggle {
-            display: none;
-          }
-
-          html:not(.SBHG-motion) .SBHG-marquee {
-            overflow: visible;
           }
 
           @media (prefers-reduced-motion: reduce) {
@@ -561,11 +522,6 @@
           root.style.setProperty(
             "--SBHG-hero-wipe",
             (-150 + wipeProgress * 150).toFixed(2) + "%"
-          );
-
-          root.style.setProperty(
-            "--SBHG-marquee-y",
-            (-heroProgress * viewportHeight * 0.6).toFixed(2) + "px"
           );
 
           root.style.setProperty(

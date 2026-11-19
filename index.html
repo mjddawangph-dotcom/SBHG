@@ -10,6 +10,8 @@
   <title>SBHG</title>
 
   <link rel="preload" href="assets/hero.png" as="image" fetchpriority="high">
+  <link rel="preload" href="assets/fonts/orbitron-latin.woff2" as="font"
+        type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/layout.css">
@@ -19,7 +21,6 @@
   <script defer src="js/hero-fan.js"></script>
   <script defer src="js/glitch.js"></script>
   <script defer src="js/scroll.js"></script>
-  <script defer src="js/marquee.js"></script>
   <script defer src="js/main.js"></script>
 </head>
 <body>
@@ -96,9 +97,10 @@
 
   <header class="SBHG-header" id="SBHG-header">
     <nav class="SBHG-nav" aria-label="Main navigation">
-      <!-- LOGO — PLACEHOLDER WORDMARK, swap for client SVG -->
       <a class="SBHG-wordmark SBHG-glitch-target" href="#home"
          aria-label="SBHG home" data-glitch data-hit>
+        <img class="SBHG-logo-star" src="assets/LOGO_STAR.svg"
+             width="225" height="225" alt="" aria-hidden="true">
         <span class="SBHG-logo-art">SBHG</span>
       </a>
 
@@ -129,6 +131,22 @@
 
   <main id="main">
     <section class="SBHG-hero" id="home" aria-label="SBHG">
+      <video class="SBHG-hero-video" autoplay muted loop playsinline
+             preload="metadata" poster="assets/glitch-poster.jpg"
+             aria-hidden="true" tabindex="-1">
+        <source src="assets/glitch-background.mp4" type="video/mp4">
+      </video>
+
+      <div class="SBHG-quote-drift" role="img"
+           aria-label="AMA ILAYO NIYO PO AKO SA DROGA ALAK LIBOG AT LAHAT NG URI NG TUKSO">
+        <div class="SBHG-quote-track">
+          <img class="SBHG-quote-art" src="assets/AMA_QUOTE.svg"
+               width="960" height="1000" alt="" aria-hidden="true">
+          <img class="SBHG-quote-art" src="assets/AMA_QUOTE.svg"
+               width="960" height="1000" alt="" aria-hidden="true">
+        </div>
+      </div>
+
       <div class="SBHG-hero-wipe">
         <div class="SBHG-hero-scroll">
           <div class="SBHG-hero-stage" id="SBHG-hero-stage">
@@ -140,23 +158,6 @@
                    loading="eager" decoding="async" fetchpriority="high">
             </div>
           </div>
-        </div>
-      </div>
-
-      <div class="SBHG-marquee-drift">
-        <div class="SBHG-marquee" aria-label="Banner">
-          <div class="SBHG-marquee-window">
-            <div class="SBHG-marquee-belt">
-              <div class="SBHG-marquee-track">
-                <span class="SBHG-banner-string">AMA ILAYO NIYO PO AKO SA DROGA ALAK LIBOG AT LAHAT NG URI NG TUKSO</span>
-                <span class="SBHG-banner-separator" aria-hidden="true">///</span>
-              </div>
-            </div>
-          </div>
-          <button class="SBHG-marquee-toggle" type="button"
-                  aria-label="Pause banner" aria-pressed="false" hidden>
-            PAUSE
-          </button>
         </div>
       </div>
 
@@ -354,9 +355,10 @@
   <footer class="SBHG-footer SBHG-section" id="footer" data-section="04">
     <div class="SBHG-seam SBHG-seam-b" aria-hidden="true"></div>
     <div class="SBHG-footer-baseline">
-      <!-- LOGO — PLACEHOLDER WORDMARK, swap for client SVG -->
       <a class="SBHG-wordmark SBHG-footer-mark SBHG-glitch-target"
          href="#home" aria-label="SBHG home" data-glitch data-hit>
+        <img class="SBHG-logo-star" src="assets/LOGO_STAR.svg"
+             width="225" height="225" alt="" aria-hidden="true">
         <span class="SBHG-logo-art">SBHG</span>
       </a>
     </div>

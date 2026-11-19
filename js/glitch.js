@@ -52,7 +52,6 @@
 
       if (
         element.matches("input, textarea, select, label") ||
-        element.closest(".SBHG-banner-string, .SBHG-marquee-track") ||
         element.closest("[data-animating]")
       ) {
         return false;
@@ -260,9 +259,7 @@
     function decode(element) {
       if (
         !element ||
-        seenHeadings.has(element) ||
-        element.closest(".SBHG-marquee") ||
-        element.classList.contains("SBHG-banner-string")
+        seenHeadings.has(element)
       ) {
         return;
       }

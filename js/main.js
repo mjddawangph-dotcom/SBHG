@@ -408,7 +408,6 @@
     const modules = [
       ["glitch", window.SBHG.glitch],
       ["scroll", window.SBHG.scroll],
-      ["marquee", window.SBHG.marquee],
       ["heroFan", window.SBHG.heroFan]
     ];
 
