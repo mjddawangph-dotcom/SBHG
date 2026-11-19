@@ -194,17 +194,6 @@
               view-timeline-axis: block;
             }
 
-            .SBHG-motion.SBHG-native .SBHG-field-rule {
-              animation: SBHG-js-contact-rule 1s linear both;
-              animation-timeline: --SBHG-js-contact;
-              animation-range: entry 15% entry 65%;
-            }
-
-            .SBHG-motion.SBHG-native .SBHG-submit::before {
-              animation: SBHG-js-contact-button 1s linear both;
-              animation-timeline: --SBHG-js-contact;
-              animation-range: entry 15% entry 65%;
-            }
 
             .SBHG-motion.SBHG-native .SBHG-footer {
               view-timeline-name: --SBHG-js-footer;

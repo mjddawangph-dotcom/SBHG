@@ -271,6 +271,7 @@
       }
 
       const finalText = element.textContent;
+      const finalHTML = element.innerHTML;
       const glyphs = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789/\\<>[]#";
       const duration = Math.round(random(400, 600));
       const start = performance.now();
@@ -290,7 +291,7 @@
 
       function restore() {
         window.clearTimeout(job.timer);
-        element.textContent = finalText;
+        element.innerHTML = finalHTML;
 
         if (element.getAttribute("aria-hidden") !== "true") {
           if (previousAriaLabel === null) {

@@ -150,14 +150,6 @@
   transform: translateY(var(--SBHG-footer-y, 0%));
 }
 
-.SBHG-motion .SBHG-field-rule {
-  transform: scaleX(var(--SBHG-contact-progress, 1));
-}
-
-.SBHG-motion .SBHG-submit::before {
-  transform: translateX(var(--SBHG-contact-wipe, 0%));
-}
-
 @media (min-width: 768px) {
   .SBHG-motion .SBHG-manifesto {
     min-height: 220vh;

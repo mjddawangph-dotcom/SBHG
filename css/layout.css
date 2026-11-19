@@ -311,6 +311,10 @@ main {
   padding-bottom: .08em;
 }
 
+.SBHG-accent {
+  color: var(--logo-yellow);
+}
+
 .SBHG-collection {
   background: rgb(12 8 16 / 38%);
 }
@@ -437,44 +441,11 @@ main {
   margin-left: 0;
 }
 
-.SBHG-contact-form {
-  margin-top: 55px;
-  max-width: 740px;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: end;
-  gap: 24px;
-}
 
-.SBHG-field {
-  min-width: 0;
-}
 
-.SBHG-field label {
-  display: block;
-  margin-bottom: 12px;
-}
 
-.SBHG-input-wrap {
-  position: relative;
-}
 
-.SBHG-input-wrap input {
-  width: 100%;
-  min-height: 52px;
-  padding: 12px 8px;
-  color: var(--bone);
-  background: var(--ink);
-  border: 0;
-  border-bottom: 1px solid var(--violet);
-}
 
-.SBHG-form-status {
-  grid-column: 1 / -1;
-  min-height: 3.4em;
-  max-width: 650px;
-  overflow-wrap: anywhere;
-}
 
 .SBHG-socials {
   display: flex;
@@ -693,14 +664,6 @@ main {
   .SBHG-contact-inner {
     margin-left: var(--page-gutter);
     width: calc(100% - 2 * var(--page-gutter) - 12px);
-  }
-
-  .SBHG-contact-form {
-    grid-template-columns: 1fr;
-  }
-
-  .SBHG-submit {
-    justify-self: start;
   }
 
   .SBHG-progress {
