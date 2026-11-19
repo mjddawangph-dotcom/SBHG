@@ -24,6 +24,22 @@
 
       const glyphs = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789/\\<>[]#";
 
+      /*
+        A character scramble reflows whatever it touches: random glyphs are
+        wider than the real ones, so a wrapped heading collapses from two lines
+        to one and back on every tick. On a phone that reads as the type
+        flickering in and out mid-animation. Skip any element that wraps.
+      */
+      function wraps(element) {
+        const lineHeight = parseFloat(getComputedStyle(element).lineHeight);
+
+        if (!lineHeight) {
+          return false;
+        }
+
+        return element.getBoundingClientRect().height > lineHeight * 1.35;
+      }
+
       function scramble(element) {
         if (!element || element.dataset.decoded === "true") {
           return;
@@ -34,7 +50,7 @@
         const finalHTML = element.innerHTML;
         const finalText = element.textContent;
 
-        if (reducedMotion.matches || !finalText) {
+        if (reducedMotion.matches || !finalText || wraps(element)) {
           return;
         }
 

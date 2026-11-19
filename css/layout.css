@@ -309,11 +309,12 @@ main {
 }
 
 /* The mask must clip on every breakpoint: the lines wait below the box at
-   translateY(115%), and without the clip they are painted in plain sight. */
+   translateY(115%), and without the clip they are painted in plain sight.
+   `hidden` rather than `clip`: a hidden box hands the clip rect to the
+   compositor, so the animating line cannot paint outside it on a phone. */
 .SBHG-line-mask {
   display: block;
   overflow: hidden;
-  overflow: clip;
 }
 
 .SBHG-statement-line {
