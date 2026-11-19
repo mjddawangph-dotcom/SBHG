@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="960" height="1000"
+     viewBox="0 0 960 1000">
+  <title>Shirt typography — clean</title>
+  <desc>
+    White, left-aligned typography reconstructed from the supplied shirt.
+    Transparent background. Straight baselines.
+  </desc>
+
+  <g fill="#ffffff"
+     font-family="Arial, Helvetica, sans-serif"
+     font-weight="900"
+     font-size="108"
+     text-anchor="start"
+     style="font-kerning:normal">
+
+    <text x="30" y="100"
+          textLength="222" lengthAdjust="spacingAndGlyphs">AMA</text>
+
+    <text x="30" y="202"
+          textLength="282" lengthAdjust="spacingAndGlyphs">ILAYO</text>
+
+    <text x="30" y="304"
+          textLength="618" lengthAdjust="spacingAndGlyphs">NIYO PO AKO</text>
+
+    <text x="30" y="406"
+          textLength="126" lengthAdjust="spacingAndGlyphs">SA</text>
+
+    <text x="30" y="508"
+          textLength="636" lengthAdjust="spacingAndGlyphs">DROGA, ALAK</text>
+
+    <text x="30" y="610"
+          textLength="738" lengthAdjust="spacingAndGlyphs">LIBOG AT LAHAT</text>
+
+    <text x="30" y="712"
+          textLength="144" lengthAdjust="spacingAndGlyphs">NG</text>
+
+    <text x="30" y="814"
+          textLength="336" lengthAdjust="spacingAndGlyphs">URI NG</text>
+
+    <text x="30" y="916"
+          textLength="369" lengthAdjust="spacingAndGlyphs">TUKSO.</text>
+  </g>
+</svg>

@@ -1,0 +1,54 @@
+/*
+  Two system-font stacks, two requested weights, no remote requests.
+  font-display is only applicable to @font-face; no downloadable fonts
+  are required by this hand-off.
+*/
+:root {
+  --void: #060407;
+  --ink: #0C0810;
+  --bruise: #1A0E22;
+  --violet: #34154A;
+  --haze: #7E5C93;
+  --bone: #E9E3DA;
+  --c-cyan: #2C8E92;
+  --c-magenta: #9E2A57;
+  --c-yellow: #B8A333;
+
+  --display: Impact, Haettenschweiler, "Arial Narrow", "Liberation Sans Narrow",
+    sans-serif;
+  --mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+
+  --logo-size: clamp(36px, 5.5vw, 76px);
+  --ui-size: 12px;
+  --display-weight: 700;
+  --ui-weight: 400;
+
+  --page-gutter: clamp(18px, 4vw, 76px);
+  --header-height: 92px;
+  --marquee-height: clamp(44px, 6vh, 68px);
+  --marquee-height: clamp(44px, 6svh, 68px);
+
+  --SBHG-progress: 0;
+  --SBHG-velocity: 0;
+  --SBHG-skew: 0deg;
+  --SBHG-collection-travel: 0px;
+  --SBHG-collection-x: 0px;
+  --SBHG-hero-lift: 0px;
+  --SBHG-hero-scale: 1;
+  --SBHG-hero-wipe: 0px;
+  --SBHG-marquee-y: 0px;
+  --SBHG-manifesto-drift: 0%;
+}
+
+@media (max-width: 767px) {
+  :root {
+    --header-height: 76px;
+    --marquee-height: 44px;
+  }
+}
+
+@media (min-width: 1440px) {
+  :root {
+    --page-gutter: 5vw;
+  }
+}

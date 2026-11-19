@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="225" height="225"
+     viewBox="0 0 225 225">
+  <title>Yellow star with a uniform pink-red outline</title>
+
+  <path
+    d="M 125,59
+       L 128,90
+       L 170,77
+       L 130,111
+       L 132,142
+       L 106.5,130
+       L 66,165
+       L 89,122
+       L 64,109.5
+       L 103,98
+       Z"
+    fill="#FFFF00"
+    stroke="#FF6384"
+    stroke-width="4"
+    stroke-linejoin="miter"
+    stroke-miterlimit="10"/>
+</svg>

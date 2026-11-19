@@ -1,0 +1,456 @@
+.SBHG-filter-definitions {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 120;
+}
+
+body::before {
+  background: url("../assets/noise.svg") repeat;
+  opacity: .11;
+  mix-blend-mode: overlay;
+}
+
+body::after {
+  /* Technical scanline texture, not a decorative gradient. */
+  background: repeating-linear-gradient(
+    to bottom,
+    var(--bone) 0,
+    var(--bone) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  opacity: .045;
+}
+
+.SBHG-meta,
+.SBHG-nav,
+.SBHG-menu,
+.SBHG-product-meta,
+.SBHG-contact,
+.SBHG-footer-bottom,
+.SBHG-progress,
+.SBHG-product-dialog,
+.SBHG-product-image {
+  letter-spacing: .09em;
+}
+
+.SBHG-skip {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 200;
+  padding: 12px 16px;
+  color: var(--void);
+  background: var(--bone);
+  transform: translateY(-180%);
+}
+
+.SBHG-skip:focus {
+  transform: translateY(0);
+}
+
+/*
+  LOGO — PLACEHOLDER WORDMARK, swap for client SVG
+  Replace only .SBHG-logo-art's contents. The outer layout remains intact.
+*/
+.SBHG-wordmark {
+  position: relative;
+  display: inline-block;
+  flex: none;
+  font-family: var(--display);
+  font-size: var(--logo-size);
+  font-weight: var(--display-weight);
+  line-height: .88;
+  letter-spacing: -.03em;
+  text-transform: uppercase;
+  overflow: hidden;
+  overflow: clip;
+  padding: 4px 3px;
+}
+
+.SBHG-logo-art {
+  display: block;
+}
+
+.SBHG-logo-art svg,
+.SBHG-logo-art img {
+  width: auto;
+  height: .88em;
+  max-width: 100%;
+}
+
+.SBHG-nav a:not(.SBHG-wordmark),
+.SBHG-menu a,
+.SBHG-progress a,
+.SBHG-scroll-marker,
+.SBHG-product-meta button {
+  position: relative;
+}
+
+.SBHG-nav a:not(.SBHG-wordmark)::after,
+.SBHG-menu a::after,
+.SBHG-progress a::after,
+.SBHG-product-meta button::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -3px;
+  height: 1px;
+  background: var(--bone);
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+.SBHG-nav a:hover::after,
+.SBHG-menu a:hover::after,
+.SBHG-progress a:hover::after,
+.SBHG-product-meta button:hover::after,
+.SBHG-nav a:focus-visible::after,
+.SBHG-menu a:focus-visible::after,
+.SBHG-product-meta button:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.SBHG-menu-trigger,
+.SBHG-menu-close,
+.SBHG-marquee-toggle {
+  position: relative;
+  background: var(--ink);
+  color: var(--bone);
+  border: 1px solid var(--violet);
+  padding: 10px 12px;
+  font-size: 11px;
+  letter-spacing: .09em;
+}
+
+.SBHG-menu-trigger {
+  clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%);
+}
+
+.SBHG-menu-close {
+  clip-path: polygon(8px 0, 100% 0, 100% 100%, 0 100%, 0 8px);
+}
+
+.SBHG-marquee {
+  position: relative;
+  min-height: var(--marquee-height);
+  background: rgb(6 4 7 / 88%);
+  border-top: 1px solid var(--violet);
+  border-bottom: 1px solid var(--violet);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  overflow: clip;
+}
+
+.SBHG-marquee-window {
+  width: 100%;
+  overflow: hidden;
+  overflow: clip;
+}
+
+.SBHG-marquee-belt {
+  display: flex;
+  width: max-content;
+  align-items: center;
+}
+
+.SBHG-marquee-track {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  padding-right: 32px;
+  white-space: nowrap;
+  font-family: var(--display);
+  font-size: clamp(27px, 3.3vw, 49px);
+  font-weight: var(--display-weight);
+  letter-spacing: -.03em;
+  line-height: 1;
+}
+
+.SBHG-banner-string {
+  display: block;
+}
+
+.SBHG-banner-separator {
+  display: block;
+}
+
+.SBHG-marquee-toggle {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+  padding: 5px 8px;
+}
+
+.SBHG-marquee-toggle:active {
+  transform: translateY(calc(-50% + 1px));
+}
+
+.SBHG-hero-original img {
+  filter: url("#SBHG-print") contrast(1.12);
+}
+
+.SBHG-hero-original.SBHG-chromatic-snap img {
+  filter: url("#SBHG-print") contrast(1.28);
+  transform: translateX(1px);
+}
+
+.SBHG-halftone {
+  position: absolute;
+  inset: -8%;
+  opacity: .08;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='7' height='7' viewBox='0 0 7 7'%3E%3Ccircle cx='2' cy='2' r='1.1' fill='%23E9E3DA'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+}
+
+.SBHG-product-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("../assets/noise.svg") repeat;
+  opacity: .12;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+.SBHG-image-cut-a {
+  clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px,
+                     100% 100%, 0 100%);
+}
+
+.SBHG-image-cut-b {
+  clip-path: polygon(16px 0, 100% 0, 100% calc(100% - 12px),
+                     calc(100% - 12px) 100%, 0 100%, 0 16px);
+}
+
+.SBHG-image-cut-c {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 24px 100%, 0 calc(100% - 24px));
+}
+
+.SBHG-product-03 .SBHG-product-image,
+.SBHG-product-06 .SBHG-product-image {
+  filter: url("#SBHG-rough");
+}
+
+.SBHG-product-meta button {
+  background: transparent;
+  border: 0;
+  padding: 8px 0;
+  font-size: 12px;
+  letter-spacing: .09em;
+}
+
+.SBHG-button {
+  position: relative;
+  display: inline-block;
+  isolation: isolate;
+  min-height: 52px;
+  min-width: 110px;
+  padding: 14px 25px;
+  border: 1px solid var(--bone);
+  background: var(--bone);
+  color: var(--void);
+  letter-spacing: .09em;
+  clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px,
+                     100% 100%, 8px 100%, 0 calc(100% - 8px));
+}
+
+.SBHG-button:hover:not(:disabled) {
+  background: var(--void);
+  color: var(--bone);
+  transform: translateX(-1px);
+}
+
+.SBHG-button:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.SBHG-button:disabled {
+  background: var(--ink);
+  color: var(--bone);
+  border-color: var(--haze);
+}
+
+.SBHG-button:focus-visible,
+.SBHG-menu-trigger:focus-visible,
+.SBHG-product:focus-visible {
+  /* Inset companion survives an element's clipped outer edge. */
+  box-shadow: inset 0 0 0 2px var(--bone);
+}
+
+.SBHG-input-wrap input[aria-invalid="true"] {
+  border-bottom: 2px solid var(--bone);
+  background: var(--void);
+}
+
+.SBHG-field-rule {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--bone);
+  transform-origin: left;
+}
+
+.SBHG-submit::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  background: var(--bone);
+  clip-path: polygon(0 0, 100% 0, 90% 100%, 0 100%);
+  z-index: -1;
+}
+
+.SBHG-submit > span {
+  position: relative;
+}
+
+.SBHG-submit:hover::before {
+  background: var(--void);
+}
+
+.SBHG-seam {
+  position: absolute;
+  top: -15px;
+  left: -2%;
+  width: 104%;
+  height: 32px;
+  background: inherit;
+  filter: url("#SBHG-rough");
+  pointer-events: none;
+  z-index: 5;
+  overflow: hidden;
+  overflow: clip;
+}
+
+.SBHG-seam-a {
+  clip-path: polygon(0 65%, 100% 0, 100% 100%, 0 100%);
+}
+
+.SBHG-seam-b {
+  clip-path: polygon(0 0, 100% 65%, 100% 100%, 0 100%);
+}
+
+.SBHG-seam::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--void);
+  transform: translateX(105%);
+}
+
+.SBHG-tile-cover {
+  position: absolute;
+  inset: -1px;
+  background: var(--ink);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 16% 100%, 0 80%);
+  transform: translateX(110%);
+  z-index: 4;
+  pointer-events: none;
+}
+
+.SBHG-glitch-target {
+  position: relative;
+}
+
+.SBHG-glitch-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 45;
+  pointer-events: none;
+  overflow: hidden;
+  overflow: clip;
+  contain: paint;
+}
+
+.SBHG-glitch-slice {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: .48;
+}
+
+.SBHG-glitch-copy {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  margin: 0 !important;
+  transform: none !important;
+  pointer-events: none !important;
+}
+
+.SBHG-glitch-copy,
+.SBHG-glitch-copy * {
+  animation: none !important;
+  transition: none !important;
+  will-change: auto !important;
+}
+
+.SBHG-glitch-copy .SBHG-glitch-layer {
+  display: none !important;
+}
+
+.SBHG-glitch-slice:nth-child(3n + 1) {
+  filter: url("#SBHG-cyan");
+}
+
+.SBHG-glitch-slice:nth-child(3n + 2) {
+  filter: url("#SBHG-magenta");
+}
+
+.SBHG-glitch-slice:nth-child(3n) {
+  filter: url("#SBHG-yellow");
+}
+
+.SBHG-glitch-sync {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 54%;
+  height: 1px;
+  background: var(--bone);
+  opacity: .3;
+}
+
+.SBHG-product-dialog::backdrop {
+  background: rgb(6 4 7 / 92%);
+}
+
+@media (min-width: 768px) {
+  .SBHG-menu-trigger {
+    display: none !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .SBHG-marquee-track {
+    font-size: 27px;
+    gap: 24px;
+    padding-right: 24px;
+  }
+
+  .SBHG-marquee-toggle {
+    font-size: 10px;
+  }
+}

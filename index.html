@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#060407">
+  <meta name="description" content="SBHG — Saved By His Grace. Clothing.">
+  <meta property="og:title" content="SBHG">
+  <meta property="og:description" content="Saved By His Grace. Clothing.">
+  <title>SBHG</title>
+
+  <link rel="preload" href="assets/hero.png" as="image" fetchpriority="high">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/motion.css">
+
+  <script defer src="js/hero-fan.js"></script>
+  <script defer src="js/glitch.js"></script>
+  <script defer src="js/scroll.js"></script>
+  <script defer src="js/marquee.js"></script>
+  <script defer src="js/main.js"></script>
+</head>
+<body>
+  <a class="SBHG-skip" href="#main">SKIP TO CONTENT</a>
+
+  <svg class="SBHG-filter-definitions" xmlns="http://www.w3.org/2000/svg"
+       aria-hidden="true" focusable="false">
+    <defs>
+      <filter id="SBHG-rough" x="-4%" y="-15%" width="108%" height="130%">
+        <feTurbulence type="fractalNoise" baseFrequency=".045 .22"
+                      numOctaves="2" seed="17" result="noise"/>
+        <feDisplacementMap in="SourceGraphic" in2="noise"
+                           scale="2.2" xChannelSelector="R" yChannelSelector="G"/>
+      </filter>
+
+      <filter id="SBHG-print" color-interpolation-filters="sRGB">
+        <feColorMatrix type="matrix"
+          values=".2126 .7152 .0722 0 0
+                  .2126 .7152 .0722 0 0
+                  .2126 .7152 .0722 0 0
+                  0 0 0 1 0"/>
+        <feComponentTransfer>
+          <feFuncR type="linear" slope=".812" intercept=".102"/>
+          <feFuncG type="linear" slope=".835" intercept=".055"/>
+          <feFuncB type="linear" slope=".722" intercept=".133"/>
+          <feFuncA type="identity"/>
+        </feComponentTransfer>
+      </filter>
+
+      <filter id="SBHG-cyan" color-interpolation-filters="sRGB">
+        <feColorMatrix type="matrix"
+          values=".036 .123 .012 0 0
+                  .118 .398 .040 0 0
+                  .122 .409 .041 0 0
+                  0 0 0 1 0"/>
+      </filter>
+      <filter id="SBHG-magenta" color-interpolation-filters="sRGB">
+        <feColorMatrix type="matrix"
+          values=".132 .443 .045 0 0
+                  .035 .118 .012 0 0
+                  .072 .244 .025 0 0
+                  0 0 0 1 0"/>
+      </filter>
+      <filter id="SBHG-yellow" color-interpolation-filters="sRGB">
+        <feColorMatrix type="matrix"
+          values=".153 .516 .052 0 0
+                  .136 .457 .046 0 0
+                  .043 .143 .014 0 0
+                  0 0 0 1 0"/>
+      </filter>
+      <filter id="SBHG-bone" color-interpolation-filters="sRGB">
+        <feColorMatrix type="matrix"
+          values=".194 .653 .066 0 0
+                  .189 .637 .064 0 0
+                  .182 .611 .062 0 0
+                  0 0 0 1 0"/>
+      </filter>
+      <filter id="SBHG-bruise" color-interpolation-filters="sRGB">
+        <feColorMatrix type="matrix"
+          values=".090 .304 .031 0 .020
+                  .059 .200 .020 0 .010
+                  .122 .411 .041 0 .030
+                  0 0 0 1 0"/>
+      </filter>
+      <filter id="SBHG-silhouette" color-interpolation-filters="sRGB">
+        <feColorMatrix type="matrix"
+          values="0 0 0 0 .025
+                  0 0 0 0 .016
+                  0 0 0 0 .029
+                  0 0 0 1 0"/>
+      </filter>
+    </defs>
+  </svg>
+
+  <header class="SBHG-header" id="SBHG-header">
+    <nav class="SBHG-nav" aria-label="Main navigation">
+      <!-- LOGO — PLACEHOLDER WORDMARK, swap for client SVG -->
+      <a class="SBHG-wordmark SBHG-glitch-target" href="#home"
+         aria-label="SBHG home" data-glitch data-hit>
+        <span class="SBHG-logo-art">SBHG</span>
+      </a>
+
+      <div class="SBHG-desktop-links">
+        <a href="#collection" data-hit>SHOP</a>
+        <a href="#manifesto" data-hit>MANIFESTO</a>
+        <a href="#contact" data-hit>CONTACT</a>
+      </div>
+
+      <button class="SBHG-menu-trigger" type="button"
+              aria-expanded="false" aria-controls="SBHG-menu" hidden>
+        MENU
+      </button>
+    </nav>
+
+    <div class="SBHG-menu" id="SBHG-menu" hidden>
+      <div class="SBHG-menu-top">
+        <span class="SBHG-meta">SBHG</span>
+        <button type="button" class="SBHG-menu-close" data-hit>CLOSE</button>
+      </div>
+      <nav aria-label="Mobile navigation">
+        <a href="#collection" data-hit>SHOP</a>
+        <a href="#manifesto" data-hit>MANIFESTO</a>
+        <a href="#contact" data-hit>CONTACT</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="SBHG-hero" id="home" aria-label="SBHG">
+      <div class="SBHG-hero-wipe">
+        <div class="SBHG-hero-scroll">
+          <div class="SBHG-hero-stage" id="SBHG-hero-stage">
+            <div class="SBHG-hero-original SBHG-glitch-target"
+                 id="SBHG-hero-original" data-glitch>
+              <img id="SBHG-hero-image" src="assets/hero.png"
+                   width="1536" height="2752"
+                   alt="SBHG supplied hero image"
+                   loading="eager" decoding="async" fetchpriority="high">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="SBHG-marquee-drift">
+        <div class="SBHG-marquee" aria-label="Banner">
+          <div class="SBHG-marquee-window">
+            <div class="SBHG-marquee-belt">
+              <div class="SBHG-marquee-track">
+                <span class="SBHG-banner-string">AMA ILAYO NIYO PO AKO SA DROGA ALAK LIBOG AT LAHAT NG URI NG TUKSO</span>
+                <span class="SBHG-banner-separator" aria-hidden="true">///</span>
+              </div>
+            </div>
+          </div>
+          <button class="SBHG-marquee-toggle" type="button"
+                  aria-label="Pause banner" aria-pressed="false" hidden>
+            PAUSE
+          </button>
+        </div>
+      </div>
+
+      <p class="SBHG-hero-kicker SBHG-meta">[PLACEHOLDER: HERO KICKER — max 4 words]</p>
+      <a class="SBHG-scroll-marker SBHG-meta" href="#manifesto">
+        <span aria-hidden="true"></span>SCROLL
+      </a>
+    </section>
+
+    <section class="SBHG-manifesto SBHG-section" id="manifesto"
+             aria-labelledby="SBHG-manifesto-heading" data-section="01">
+      <div class="SBHG-seam SBHG-seam-a" aria-hidden="true"></div>
+      <div class="SBHG-manifesto-pin" data-pin>
+        <div class="SBHG-halftone SBHG-manifesto-dots" aria-hidden="true"></div>
+
+        <div class="SBHG-manifesto-side">
+          <span class="SBHG-meta">01 — MANIFESTO</span>
+          <span class="SBHG-manifesto-rail" aria-hidden="true">
+            <span></span>
+          </span>
+        </div>
+
+        <h1 class="SBHG-statement SBHG-glitch-target"
+            id="SBHG-manifesto-heading"
+            aria-label="[PLACEHOLDER: MANIFESTO STATEMENT]" data-glitch>
+          <span class="SBHG-line-mask">
+            <span class="SBHG-statement-line" data-line="0" data-decode
+                  aria-hidden="true">[PLACEHOLDER:</span>
+          </span>
+          <span class="SBHG-line-mask">
+            <span class="SBHG-statement-line" data-line="1" data-decode
+                  aria-hidden="true">MANIFESTO</span>
+          </span>
+          <span class="SBHG-line-mask">
+            <span class="SBHG-statement-line" data-line="2" data-decode
+                  aria-hidden="true">STATEMENT]</span>
+          </span>
+        </h1>
+      </div>
+    </section>
+
+    <section class="SBHG-collection SBHG-section" id="collection"
+             aria-labelledby="SBHG-collection-heading" data-section="02">
+      <div class="SBHG-seam SBHG-seam-b" aria-hidden="true"></div>
+      <div class="SBHG-collection-pin" data-pin>
+        <h2 class="SBHG-section-heading SBHG-glitch-target"
+            id="SBHG-collection-heading" data-decode data-glitch>COLLECTION</h2>
+
+        <div class="SBHG-collection-window">
+          <div class="SBHG-collection-row" id="SBHG-collection-row">
+            <article class="SBHG-product SBHG-product-01 SBHG-glitch-target"
+                     tabindex="0" aria-labelledby="SBHG-item-01"
+                     data-glitch data-tile data-item="01">
+              <div class="SBHG-product-image SBHG-image-cut-a">
+                <div class="SBHG-halftone" aria-hidden="true"></div>
+                <span>[PLACEHOLDER: PRODUCT IMAGE]</span>
+                <span class="SBHG-tile-cover" aria-hidden="true"></span>
+              </div>
+              <div class="SBHG-product-meta">
+                <h3 id="SBHG-item-01">ITEM 01</h3>
+                <p>[PLACEHOLDER: PRODUCT NAME]</p>
+                <p>[PLACEHOLDER: PRICE]</p>
+                <button type="button" data-view="01" data-hit
+                        aria-label="View ITEM 01">VIEW</button>
+              </div>
+            </article>
+
+            <article class="SBHG-product SBHG-product-02 SBHG-glitch-target"
+                     tabindex="0" aria-labelledby="SBHG-item-02"
+                     data-glitch data-tile data-item="02">
+              <div class="SBHG-product-image SBHG-image-cut-b">
+                <div class="SBHG-halftone" aria-hidden="true"></div>
+                <span>[PLACEHOLDER: PRODUCT IMAGE]</span>
+                <span class="SBHG-tile-cover" aria-hidden="true"></span>
+              </div>
+              <div class="SBHG-product-meta">
+                <h3 id="SBHG-item-02">ITEM 02</h3>
+                <p>[PLACEHOLDER: PRODUCT NAME]</p>
+                <p>[PLACEHOLDER: PRICE]</p>
+                <button type="button" data-view="02" data-hit
+                        aria-label="View ITEM 02">VIEW</button>
+              </div>
+            </article>
+
+            <article class="SBHG-product SBHG-product-03 SBHG-glitch-target"
+                     tabindex="0" aria-labelledby="SBHG-item-03"
+                     data-glitch data-tile data-item="03">
+              <div class="SBHG-product-image SBHG-image-cut-c">
+                <div class="SBHG-halftone" aria-hidden="true"></div>
+                <span>[PLACEHOLDER: PRODUCT IMAGE]</span>
+                <span class="SBHG-tile-cover" aria-hidden="true"></span>
+              </div>
+              <div class="SBHG-product-meta">
+                <h3 id="SBHG-item-03">ITEM 03</h3>
+                <p>[PLACEHOLDER: PRODUCT NAME]</p>
+                <p>[PLACEHOLDER: PRICE]</p>
+                <button type="button" data-view="03" data-hit
+                        aria-label="View ITEM 03">VIEW</button>
+              </div>
+            </article>
+
+            <article class="SBHG-product SBHG-product-04 SBHG-glitch-target"
+                     tabindex="0" aria-labelledby="SBHG-item-04"
+                     data-glitch data-tile data-item="04">
+              <div class="SBHG-product-image SBHG-image-cut-b">
+                <div class="SBHG-halftone" aria-hidden="true"></div>
+                <span>[PLACEHOLDER: PRODUCT IMAGE]</span>
+                <span class="SBHG-tile-cover" aria-hidden="true"></span>
+              </div>
+              <div class="SBHG-product-meta">
+                <h3 id="SBHG-item-04">ITEM 04</h3>
+                <p>[PLACEHOLDER: PRODUCT NAME]</p>
+                <p>[PLACEHOLDER: PRICE]</p>
+                <button type="button" data-view="04" data-hit
+                        aria-label="View ITEM 04">VIEW</button>
+              </div>
+            </article>
+
+            <article class="SBHG-product SBHG-product-05 SBHG-glitch-target"
+                     tabindex="0" aria-labelledby="SBHG-item-05"
+                     data-glitch data-tile data-item="05">
+              <div class="SBHG-product-image SBHG-image-cut-c">
+                <div class="SBHG-halftone" aria-hidden="true"></div>
+                <span>[PLACEHOLDER: PRODUCT IMAGE]</span>
+                <span class="SBHG-tile-cover" aria-hidden="true"></span>
+              </div>
+              <div class="SBHG-product-meta">
+                <h3 id="SBHG-item-05">ITEM 05</h3>
+                <p>[PLACEHOLDER: PRODUCT NAME]</p>
+                <p>[PLACEHOLDER: PRICE]</p>
+                <button type="button" data-view="05" data-hit
+                        aria-label="View ITEM 05">VIEW</button>
+              </div>
+            </article>
+
+            <article class="SBHG-product SBHG-product-06 SBHG-glitch-target"
+                     tabindex="0" aria-labelledby="SBHG-item-06"
+                     data-glitch data-tile data-item="06">
+              <div class="SBHG-product-image SBHG-image-cut-a">
+                <div class="SBHG-halftone" aria-hidden="true"></div>
+                <span>[PLACEHOLDER: PRODUCT IMAGE]</span>
+                <span class="SBHG-tile-cover" aria-hidden="true"></span>
+              </div>
+              <div class="SBHG-product-meta">
+                <h3 id="SBHG-item-06">ITEM 06</h3>
+                <p>[PLACEHOLDER: PRODUCT NAME]</p>
+                <p>[PLACEHOLDER: PRICE]</p>
+                <button type="button" data-view="06" data-hit
+                        aria-label="View ITEM 06">VIEW</button>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="SBHG-contact SBHG-section" id="contact"
+             aria-labelledby="SBHG-contact-heading" data-section="03">
+      <div class="SBHG-seam SBHG-seam-a" aria-hidden="true"></div>
+      <div class="SBHG-contact-inner">
+        <h2 class="SBHG-section-heading SBHG-glitch-target"
+            id="SBHG-contact-heading" data-decode data-glitch>CONTACT</h2>
+
+        <form class="SBHG-contact-form" id="SBHG-contact-form"
+              method="post" action="#contact"
+              data-endpoint="[PLACEHOLDER: CONTACT FORM ENDPOINT]">
+          <div class="SBHG-field">
+            <label for="SBHG-email">EMAIL</label>
+            <div class="SBHG-input-wrap">
+              <input id="SBHG-email" name="email" type="email"
+                     required autocomplete="email" inputmode="email"
+                     maxlength="254"
+                     aria-describedby="SBHG-form-status">
+              <span class="SBHG-field-rule" aria-hidden="true"></span>
+            </div>
+          </div>
+          <button class="SBHG-button SBHG-submit" type="submit"
+                  disabled data-hit>
+            <span>JOIN</span>
+          </button>
+          <p class="SBHG-form-status" id="SBHG-form-status"
+             role="status" aria-live="polite">
+            [PLACEHOLDER: CONTACT FORM ENDPOINT — submission unavailable]
+          </p>
+          <noscript>
+            <p class="SBHG-meta">JavaScript is required to submit this form.</p>
+          </noscript>
+        </form>
+
+        <p class="SBHG-social-placeholder">[PLACEHOLDER: SOCIAL LINKS]</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="SBHG-footer SBHG-section" id="footer" data-section="04">
+    <div class="SBHG-seam SBHG-seam-b" aria-hidden="true"></div>
+    <div class="SBHG-footer-baseline">
+      <!-- LOGO — PLACEHOLDER WORDMARK, swap for client SVG -->
+      <a class="SBHG-wordmark SBHG-footer-mark SBHG-glitch-target"
+         href="#home" aria-label="SBHG home" data-glitch data-hit>
+        <span class="SBHG-logo-art">SBHG</span>
+      </a>
+    </div>
+    <div class="SBHG-footer-bottom">
+      <p>© SBHG <span id="SBHG-year">[PLACEHOLDER: CURRENT YEAR]</span></p>
+      <p>[PLACEHOLDER: SOCIAL LINKS]</p>
+    </div>
+  </footer>
+
+  <aside class="SBHG-progress" aria-label="Section navigation">
+    <span class="SBHG-progress-line" aria-hidden="true"><span></span></span>
+    <a href="#home" aria-label="01 — Hero">01</a>
+    <a href="#manifesto" aria-label="02 — Manifesto">02</a>
+    <a href="#collection" aria-label="03 — Collection">03</a>
+    <a href="#contact" aria-label="04 — Contact">04</a>
+    <a href="#footer" aria-label="05 — Footer">05</a>
+  </aside>
+
+  <dialog class="SBHG-product-dialog" id="SBHG-product-dialog"
+          aria-labelledby="SBHG-dialog-title">
+    <div class="SBHG-dialog-inner">
+      <h2 id="SBHG-dialog-title">ITEM 01</h2>
+      <div class="SBHG-dialog-image">
+        <span>[PLACEHOLDER: PRODUCT IMAGE]</span>
+      </div>
+      <p>[PLACEHOLDER: PRODUCT NAME]</p>
+      <p>[PLACEHOLDER: PRICE]</p>
+      <form method="dialog">
+        <button class="SBHG-button" value="close" data-hit>CLOSE</button>
+      </form>
+    </div>
+  </dialog>
+</body>
+</html>

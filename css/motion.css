@@ -1,0 +1,341 @@
+/*
+  Every choreography selector requires SBHG-motion.
+  Without JavaScript the default layout is visible and static.
+*/
+
+@keyframes SBHG-marquee-travel {
+  to {
+    transform: translateX(calc(-1 * var(--SBHG-marquee-distance, 0px)));
+  }
+}
+
+.SBHG-motion .SBHG-marquee-belt {
+  animation: SBHG-marquee-travel 34s linear infinite;
+}
+
+.SBHG-marquee:hover .SBHG-marquee-belt,
+.SBHG-marquee:focus-within .SBHG-marquee-belt,
+.SBHG-marquee.SBHG-paused .SBHG-marquee-belt {
+  animation-play-state: paused;
+}
+
+@keyframes SBHG-link-plate {
+  0% {
+    transform: translateX(1px);
+  }
+  12% {
+    background: var(--c-magenta);
+    opacity: .6;
+  }
+  25%,
+  100% {
+    background: var(--bone);
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.SBHG-motion .SBHG-nav a:hover::after,
+.SBHG-motion .SBHG-menu a:hover::after,
+.SBHG-motion .SBHG-product-meta button:hover::after {
+  animation: SBHG-link-plate 140ms steps(1, end) both;
+}
+
+@keyframes SBHG-slice-hit {
+  0% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+  10% {
+    transform: translate(var(--SBHG-slice-x), 0);
+    opacity: .48;
+  }
+  28% {
+    transform: translate(calc(var(--SBHG-slice-x) * -.5), 1px);
+    opacity: .35;
+  }
+  46% {
+    transform: translate(var(--SBHG-slice-x), 0);
+    opacity: .52;
+  }
+  49% {
+    opacity: 0;
+  }
+  53% {
+    opacity: .45;
+  }
+  72% {
+    transform: translate(1px, -1px);
+    opacity: .3;
+  }
+  100% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+}
+
+@keyframes SBHG-target-flicker {
+  0%,
+  36%,
+  44%,
+  100% {
+    opacity: 1;
+  }
+  40% {
+    opacity: .94;
+  }
+}
+
+.SBHG-bursting {
+  animation: SBHG-target-flicker var(--SBHG-burst-duration, 280ms)
+    steps(1, end) both;
+}
+
+.SBHG-glitch-slice {
+  animation: SBHG-slice-hit var(--SBHG-burst-duration, 280ms)
+    steps(1, end) both;
+}
+
+.SBHG-motion .SBHG-hero-scroll {
+  transform: translateY(var(--SBHG-hero-lift)) scale(var(--SBHG-hero-scale));
+}
+
+.SBHG-motion .SBHG-hero-wipe::after {
+  content: "";
+  position: absolute;
+  inset: -20% -10%;
+  background: var(--void);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 83%);
+  transform: translateY(var(--SBHG-hero-wipe, -150%));
+  z-index: 20;
+  pointer-events: none;
+}
+
+.SBHG-motion .SBHG-hero-wipe.SBHG-wipe-tear::before {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  top: 44%;
+  height: 1px;
+  background: var(--c-yellow);
+  opacity: .5;
+  transform: rotate(-7deg);
+  z-index: 21;
+  pointer-events: none;
+}
+
+.SBHG-motion .SBHG-marquee-drift {
+  transform: translateY(var(--SBHG-marquee-y));
+}
+
+.SBHG-motion .SBHG-seam::after {
+  transform: translateX(var(--SBHG-seam-x, 105%));
+}
+
+.SBHG-motion .SBHG-collection-row {
+  transform: translateX(var(--SBHG-collection-x)) skewY(var(--SBHG-skew));
+}
+
+.SBHG-motion .SBHG-tile-cover {
+  transform: translateX(var(--SBHG-tile-wipe, 110%));
+}
+
+.SBHG-motion .SBHG-footer-mark {
+  transform: translateY(var(--SBHG-footer-y, 0%));
+}
+
+.SBHG-motion .SBHG-field-rule {
+  transform: scaleX(var(--SBHG-contact-progress, 1));
+}
+
+.SBHG-motion .SBHG-submit::before {
+  transform: translateX(var(--SBHG-contact-wipe, 0%));
+}
+
+@media (min-width: 768px) {
+  .SBHG-motion .SBHG-manifesto {
+    min-height: 220vh;
+    min-height: 220svh;
+  }
+
+  .SBHG-motion .SBHG-manifesto-pin {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    height: 100svh;
+    min-height: 0;
+  }
+
+  .SBHG-motion .SBHG-line-mask {
+    overflow: hidden;
+    overflow: clip;
+  }
+
+  .SBHG-motion .SBHG-statement-line {
+    transform: translateY(var(--SBHG-line-y, 0%));
+  }
+
+  .SBHG-motion .SBHG-manifesto-dots {
+    transform: translateY(var(--SBHG-manifesto-drift));
+  }
+
+  .SBHG-motion .SBHG-manifesto-rail > span {
+    transform: scaleY(var(--SBHG-manifesto-progress, 1));
+  }
+
+  .SBHG-motion .SBHG-collection {
+    height: 200vh;
+    height: 200svh;
+  }
+
+  .SBHG-motion .SBHG-collection-pin {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    height: 100svh;
+    padding-top: max(108px, 12svh);
+    padding-bottom: 20px;
+    overflow: hidden;
+    overflow: clip;
+  }
+
+  .SBHG-motion .SBHG-collection-window {
+    height: calc(100% - 80px);
+    margin-top: 20px;
+  }
+
+  .SBHG-motion .SBHG-collection-row {
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    width: max-content;
+    gap: 4vw;
+    padding-right: 10vw;
+  }
+
+  .SBHG-motion .SBHG-product {
+    flex: none;
+    width: 33vw;
+    margin-left: 0;
+    margin-top: 0;
+  }
+
+  .SBHG-motion .SBHG-product-01 {
+    width: 33vw;
+    margin-top: 3svh;
+  }
+
+  .SBHG-motion .SBHG-product-02 {
+    width: 50vw;
+    margin-top: 10svh;
+  }
+
+  .SBHG-motion .SBHG-product-03 {
+    width: 40vw;
+    margin-top: 0;
+  }
+
+  .SBHG-motion .SBHG-product-04 {
+    width: 43vw;
+    margin-top: 8svh;
+  }
+
+  .SBHG-motion .SBHG-product-05 {
+    width: 50vw;
+    margin-top: 2svh;
+  }
+
+  .SBHG-motion .SBHG-product-06 {
+    width: 33vw;
+    margin-top: 11svh;
+  }
+
+  .SBHG-motion .SBHG-product-image {
+    height: clamp(130px, 37svh, 440px);
+    aspect-ratio: auto;
+  }
+}
+
+/* Native scroll timelines replace the corresponding fallback transforms. */
+@supports (animation-timeline: view()) {
+  @keyframes SBHG-native-hero {
+    0%,
+    20% {
+      transform: translateY(0) scale(1);
+    }
+    65%,
+    100% {
+      transform: translateY(-8svh) scale(.94);
+    }
+  }
+
+  @keyframes SBHG-native-hero-wipe {
+    0%,
+    45% {
+      transform: translateY(-150%);
+    }
+    75%,
+    100% {
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes SBHG-native-marquee {
+    to {
+      transform: translateY(-60svh);
+    }
+  }
+
+  @keyframes SBHG-native-seam {
+    from {
+      transform: translateX(0%);
+    }
+    to {
+      transform: translateX(105%);
+    }
+  }
+
+  @keyframes SBHG-native-footer {
+    from {
+      transform: translateY(110%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes SBHG-native-rule {
+    from {
+      transform: scaleX(0);
+    }
+    to {
+      transform: scaleX(1);
+    }
+  }
+
+  @keyframes SBHG-native-button {
+    from {
+      transform: translateX(-110%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+
+  .SBHG-motion.SBHG-native .SBHG-hero {
+    view-timeline-name: --SBHG-hero;
+    view-timeline-axis: block;
+  }
+
+  .SBHG-motion.SBHG-native .SBHG-hero-scroll {
+    animation: SBHG-native-hero 1s linear both;
+    animation-timeline: --SBHG-hero;
+    animation-range: exit 0% exit 100%;
+  }
+
+  .SBHG-motion.SBHG-native .SBHG-hero-wipe::after {
+    animation: SBHG-native-hero-wipe 1s linear both;
+    animation-timeline: --SBHG-hero;
+    animation-range: exit 0% exit 100%;
+  }
+
+  .SBHG-motion.SBHG
