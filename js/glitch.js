@@ -390,6 +390,10 @@
         return;
       }
 
+      if (window.matchMedia("(max-width: 767px)").matches) {
+        return;
+      }
+
       initialized = true;
 
       document.addEventListener("pointerover", function (event) {
