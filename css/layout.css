@@ -318,23 +318,13 @@ main {
   padding-bottom: .08em;
 }
 
-/* Hidden only when JS is running, so no-JS readers still see the statement. */
+/* Hidden until the reveal animation runs (JS only, so no-JS readers see it). */
 .SBHG-js .SBHG-statement-line {
-  transform: translateY(110%);
-  transition: transform .9s cubic-bezier(.2, .7, .2, 1);
+  transform: translateY(115%);
 }
 
 .SBHG-js .SBHG-statement-line.is-in {
   transform: translateY(0);
-}
-
-/* Cascade, like the original choreography. */
-.SBHG-js .SBHG-statement-line[data-line="1"] {
-  transition-delay: .09s;
-}
-
-.SBHG-js .SBHG-statement-line[data-line="2"] {
-  transition-delay: .18s;
 }
 
 @media (prefers-reduced-motion: reduce) {

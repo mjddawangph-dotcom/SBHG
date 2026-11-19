@@ -65,13 +65,37 @@
       }
 
       function reveal(element) {
+        if (element.dataset.revealed === "true") {
+          return;
+        }
+
+        element.dataset.revealed = "true";
+
+        const index = Number(element.getAttribute("data-line")) || 0;
+        const delay = index * 160;
+
+        if (typeof element.animate === "function") {
+          element.animate(
+            [
+              { transform: "translateY(115%)" },
+              { transform: "translateY(0)" }
+            ],
+            {
+              duration: 1400,
+              delay: delay,
+              easing: "cubic-bezier(.16, .84, .32, 1)",
+              fill: "both"
+            }
+          );
+        }
+
         element.classList.add("is-in");
       }
 
       function inView(element) {
         const rect = element.getBoundingClientRect();
         const vh = window.innerHeight;
-        return rect.bottom > 0 && rect.top < vh * 0.85;
+        return rect.bottom > 0 && rect.top < vh * 0.72;
       }
 
       let timer = 0;
@@ -109,8 +133,19 @@
       window.addEventListener("resize", schedule);
       document.addEventListener("visibilitychange", schedule);
 
-      check();
-      window.setTimeout(schedule, 400);
+      /*
+        While the loading screen is up, stay put: revealing behind the overlay
+        would spend the animation where nobody can see it.
+      */
+      if (document.documentElement.classList.contains("SBHG-loading")) {
+        document.addEventListener("SBHG:loaded", function () {
+          check();
+          window.setTimeout(schedule, 250);
+        }, { once: true });
+      } else {
+        check();
+        window.setTimeout(schedule, 250);
+      }
     }
   };
 })();
