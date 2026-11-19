@@ -558,6 +558,11 @@
       window.setTimeout(function () {
         root.classList.remove("SBHG-loading");
         loader.hidden = true;
+
+        /* Unlocking the scroll container can restore an offset; pin it to 0. */
+        if (!window.location.hash && window.scrollY !== 0) {
+          window.scrollTo(0, 0);
+        }
       }, 480);
 
       try {
@@ -663,7 +668,36 @@
     window.setTimeout(finish, 8000);
   }
 
+  /*
+    The page always opens at the top, including on refresh and back/forward
+    cache restores. Explicit #hash links still win.
+  */
+  function startAtTop() {
+    if (window.location.hash) {
+      return;
+    }
+
+    if (typeof window.scrollTo === "function") {
+      try {
+        window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+        return;
+      } catch (error) {
+        /* Older engines reject the options object. */
+      }
+
+      window.scrollTo(0, 0);
+    }
+  }
+
   function initialize() {
+    startAtTop();
+
+    window.addEventListener("pageshow", function (event) {
+      if (event.persisted) {
+        startAtTop();
+      }
+    });
+
     const root = document.documentElement;
     const year = document.getElementById("SBHG-year");
 

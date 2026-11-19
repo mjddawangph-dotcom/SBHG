@@ -86,6 +86,12 @@ Live copy: Instagram <https://www.instagram.com/brgy.sbhg/>, Facebook
 same-day via Lalamove, Kalookan. Sales copy on Carousell: "Everything on sale —
 30–50% off…".
 
+## Always start at the top
+
+`history.scrollRestoration = "manual"` is set in an inline head script, `startAtTop()`
+runs on `DOMContentLoaded` and on any `pageshow` with `persisted`, and the loader pins
+scroll to 0 when it clears. Explicit `#hash` URLs are left alone so deep links still work.
+
 ## Loading screen
 
 The first load of a browser session shows an overlay (`#SBHG-loader`) that blocks scroll
