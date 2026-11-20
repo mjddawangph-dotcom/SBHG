@@ -743,9 +743,19 @@ main {
     display: none;
   }
 
+  /*
+    The artwork is 68% transparent margin: the figure only spans 23.6%-80.8% of
+    the canvas width and 7.4%-98.8% of its height. Sizing the canvas to the
+    screen therefore shrinks the man to two thirds of the fold. Instead the
+    figure is fitted, not the canvas: its height fills the space under the
+    header, and the empty side margins are allowed to pass the screen edges -
+    .SBHG-hero clips them, and no pixel of the figure leaves the viewport.
+  */
   .SBHG-hero-stage {
-    bottom: 3svh;
-    width: min(78vw, 39svh);
+    --SBHG-hero-fit: calc(100svh - var(--header-height) - 2svh - 8px);
+    bottom: 2svh;
+    height: calc(var(--SBHG-hero-fit) / 0.914);
+    width: calc(var(--SBHG-hero-fit) / 0.914 * 0.5583);
   }
 
   .SBHG-hero-kicker {
