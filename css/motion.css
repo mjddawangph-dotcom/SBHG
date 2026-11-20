@@ -3,24 +3,43 @@
   Without JavaScript the default layout is visible and static.
 */
 
-@keyframes SBHG-quote-up {
+/*
+  Each copy is its own object with its own transform, so the wrap that restarts
+  the loop happens while that copy is outside the masked window - it enters from
+  the bottom edge and leaves through the top edge.
+
+  A pass is three pitches long: on a phone the window is taller than one pitch,
+  and three pitches is the shortest travel that still starts below the window
+  and ends above it (two pitches is not enough there). Speed is unchanged at one
+  pitch per 28s.
+*/
+@keyframes SBHG-quote-pass {
   from {
-    transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 100svh, 0);
   }
   to {
-    transform: translate3d(0, -50%, 0);
+    transform: translate3d(0, calc(100svh - 3 * (100% + 3vh)), 0);
   }
 }
 
-.SBHG-motion .SBHG-quote-track {
-  animation: SBHG-quote-up 28s linear infinite;
+.SBHG-motion .SBHG-quote-art {
+  animation: SBHG-quote-pass 84s linear infinite;
+}
+
+/* One pitch apart, so the copies keep their 3vh gaps and cover the window. */
+.SBHG-motion .SBHG-quote-art:nth-child(2) {
+  animation-delay: -28s;
+}
+
+.SBHG-motion .SBHG-quote-art:nth-child(3) {
+  animation-delay: -56s;
 }
 
 /*
   Reduced motion: the quote parks, only one copy is present.
 */
 @media (prefers-reduced-motion: reduce) {
-  .SBHG-motion .SBHG-quote-track {
+  .SBHG-motion .SBHG-quote-art {
     animation: none;
   }
 

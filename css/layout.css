@@ -222,24 +222,27 @@ main {
     transparent);
 }
 
+/*
+  Each copy travels on its own transform (see SBHG-quote-pass in motion.css),
+  so the loop restart happens while that copy is outside the window: it enters
+  from below the fold and leaves above the top edge. A paint that lands a frame
+  late there is invisible, which a single translated track could not promise.
+*/
 .SBHG-quote-track {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  position: relative;
   width: 100%;
-  /* Own content height, not the container's: the -50% loop depends on it. */
-  flex: none;
-  height: max-content;
-  will-change: transform;
+  height: 100%;
 }
 
 .SBHG-quote-art {
+  position: absolute;
+  top: 0;
+  left: 0;
   display: block;
   width: 100%;
   height: auto;
   max-width: none;
-  margin-bottom: 3svh;
-  margin-bottom: 3vh;
+  margin: 0;
 }
 
 .SBHG-hero-kicker {
