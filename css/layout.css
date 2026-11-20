@@ -752,10 +752,14 @@ main {
     .SBHG-hero clips them, and no pixel of the figure leaves the viewport.
   */
   .SBHG-hero-stage {
-    --SBHG-hero-fit: calc(100svh - var(--header-height) - 2svh - 8px);
-    bottom: 2svh;
-    height: calc(var(--SBHG-hero-fit) / 0.914);
-    width: calc(var(--SBHG-hero-fit) / 0.914 * 0.5583);
+    /* Height of the figure itself: header edge to just above the fold. */
+    --SBHG-hero-figure: calc(100svh - var(--header-height) - 6px);
+    /* Canvas height that produces it (the figure spans 7.38%-98.76% of it). */
+    --SBHG-hero-canvas: calc(var(--SBHG-hero-figure) / 0.9138);
+    top: calc(var(--header-height) - var(--SBHG-hero-canvas) * 0.0738);
+    bottom: auto;
+    height: var(--SBHG-hero-canvas);
+    width: calc(var(--SBHG-hero-canvas) * 0.5583);
   }
 
   .SBHG-hero-kicker {
