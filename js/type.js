@@ -88,7 +88,7 @@
         element.dataset.revealed = "true";
 
         const index = Number(element.getAttribute("data-line")) || 0;
-        const delay = index * 160;
+        const delay = index * 120;
 
         if (typeof element.animate === "function") {
           element.animate(
@@ -97,7 +97,7 @@
               { transform: "translateY(0)" }
             ],
             {
-              duration: 1400,
+              duration: 1150,
               delay: delay,
               easing: "cubic-bezier(.16, .84, .32, 1)",
               fill: "both"
@@ -111,7 +111,10 @@
       function inView(element) {
         const rect = element.getBoundingClientRect();
         const vh = window.innerHeight;
-        return rect.bottom > 0 && rect.top < vh * 0.72;
+        /* Trigger as the element touches the fold, not when it is already a
+           third of the way up: the rise then plays while the section enters
+           instead of after the reader has been staring at empty space. */
+        return rect.bottom > 0 && rect.top < vh * 0.95;
       }
 
       let timer = 0;

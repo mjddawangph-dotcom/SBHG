@@ -1,6 +1,8 @@
 /*
   Every choreography selector requires SBHG-motion.
   Without JavaScript the default layout is visible and static.
+  The manifesto deliberately has no choreography: it is one screen that
+  scrolls past, and js/type.js raises its lines as the section enters.
 */
 
 /*
@@ -147,27 +149,6 @@
 }
 
 @media (min-width: 768px) {
-  .SBHG-motion .SBHG-manifesto {
-    min-height: 220vh;
-    min-height: 220svh;
-  }
-
-  .SBHG-motion .SBHG-manifesto-pin {
-    position: sticky;
-    top: 0;
-    height: 100vh;
-    height: 100svh;
-    min-height: 0;
-  }
-
-  .SBHG-motion .SBHG-manifesto-dots {
-    transform: translateY(var(--SBHG-manifesto-drift));
-  }
-
-  .SBHG-motion .SBHG-manifesto-rail > span {
-    transform: scaleY(var(--SBHG-manifesto-progress, 1));
-  }
-
   .SBHG-motion .SBHG-collection {
     height: 200vh;
     height: 200svh;

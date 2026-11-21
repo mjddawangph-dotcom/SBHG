@@ -276,6 +276,7 @@ main {
   background: var(--bruise);
 }
 
+/* One screen, no sticky pin: the manifesto scrolls past exactly once. */
 .SBHG-manifesto-pin {
   position: relative;
   min-height: 90vh;
