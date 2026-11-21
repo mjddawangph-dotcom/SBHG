@@ -18,9 +18,8 @@ css/layout.css             section layout, hero stage, video backdrop
 css/components.css         wordmark, buttons, tiles, dialog, links
 css/motion.css             scroll/hero/quote choreography (needs .SBHG-motion)
 js/hero-fan.js             hero "inking plates" intro (plays once, ~2s)
-js/glitch.js               slice glitches on [data-glitch] targets
-js/scroll.js               scroll progress, pinning, decode text, smooth links
-js/main.js                 menu, dialog, contact form, year, module boot
+js/type.js                 manifesto line rises + [data-decode] scramble
+js/main.js                 menu, product dialog, swipe gallery, year, boot
 assets/hero.png            cutout (RGBA, 1536x2752, 7.5% empty above head)
 assets/LOGO_STAR.svg       star mark used in header/footer lockup
 assets/AMA_QUOTE.svg       shirt typography used by the hero quote scroller
